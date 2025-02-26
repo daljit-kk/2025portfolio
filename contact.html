@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Contact Me</title>
+</head>
+<body>
+	 <nav id="navbar">
+        <div id="navbar-left">
+            <a href="index.html"><span id="name">Daljit Kaur Design</span></a>
+        </div>
+        <ul id="navbar-right">
+            <li><a href="index.html">Work</a></li>
+            <li><a href="playground.html">Playground</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+  <header>
+    
+  </header>
+  <section class="project-details">
+   
+    
+    <style>
+        
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+       
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        input, textarea {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        input[type="text"], input[type="email"] {
+            height: 40px;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            text-align: center;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contact Me</h1>
+        <form action="send_email.php" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="message">
+            <!-- Message feedback (Success/Failure) will be shown here -->
+        </div>
+    </div>
+
+</body>
+</html>
+
+    <footer>
+  <div class="footer-content">
+    <h1><em>Say Hi</em></h1>
+    <nav>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/">LinkedIn</a></li>
+        <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
+		  <li><a href="about.html">About Me</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</section>
+</body>
+</html>
