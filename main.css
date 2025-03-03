@@ -201,7 +201,7 @@ hr{
     font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 3rem;
     font-weight: 900;
-    color: #FF5C8D; /* Set the color of the dynamic text */
+    color: black; /* Set the color of the dynamic text */
     margin: 0;
     padding: 0;
 }
@@ -369,7 +369,7 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 
 .video-khehra video{
     /*position: absolute;  /* Position it relative to the #hero container */
-    top: 0;
+    top: 0%;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -378,7 +378,7 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 /* Container to hold the video and make it fill the screen */
 .video-background {
     position: absolute;  /* Position it relative to the #hero container */
-    top: 0;
+    top: 0%;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -537,6 +537,10 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
     transform: scale(1.05); /* Expands the element by 1.1 times when hovered */
 }
 
+.whitebg {
+	background-color: white;
+}
+
 /* Make left column sticky */
 .column.stats.sticky {
     position:relative ;
@@ -551,9 +555,22 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
 
+.column.play {
+    position: relative;
+	top: 0px;
+	min-height: 350px;
+}
+
+.column .stats .aboutme {
+    position: relative;
+	top: 0px;
+	min-height: 350px;
+}
+
 /* Image Gallery Styling */
 #image-gallery {
     margin-top: 30px;
+
 }
 .index-page .center {
     width: 50%;
@@ -571,13 +588,7 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
     margin-bottom: -9px;
 }
 
-.content-under-video .center {
-    width: 55%;
-    padding-left: 7%;
-    padding-top: 7%;
-    padding-right: 7%;
-    padding-bottom: 7%;
-}
+
 .content-under-video .center p {
     font-size: x-large;
     padding-left: 0px;
@@ -585,6 +596,14 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
     padding-right: 0px;
     padding-bottom: 0px;
     margin-bottom: -9px;
+}
+
+		 .content-under-video .center {
+    width: 55%;
+    padding-left: 7%;
+    padding-top: 7%;
+    padding-right: 7%;
+    padding-bottom: 7%;
 }
 
 .homebutton {
@@ -643,7 +662,8 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
     padding: 10px 20px;           /* Padding inside the button */
 	margin-top: 40px;
 	margin-bottom: 40px;
-    font-size: 16px;              /* Text size */
+    position: relative;
+	font-size: 16px;              /* Text size */
     font-weight: bold;            /* Bold text */
     border-radius: 8px;           /* Slightly rounded corners */
     cursor: pointer;             /* Pointer cursor on hover */
@@ -932,7 +952,7 @@ footer nav ul li a:hover {
 	
 	.video-khehra video {
         width: 100%;  /* Full viewport width */
-		padding-top: 30%;
+		padding-top: 20%;
       }
 	
     .video-background video {
@@ -943,6 +963,7 @@ footer nav ul li a:hover {
 	.content-under-video {
  position: relative; /* Adjust this container */
 	/*margin-top:-110%;*/
+		
 }
 	
 	.row {
@@ -963,7 +984,7 @@ footer nav ul li a:hover {
 	}
 .project-details .cleo {
 	width: 100%;
-	margin-top: 140px;
+	margin-top: 0px;
     display: flex;
 }
 .row .column .info {
@@ -1013,7 +1034,7 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
      .video-khehra video {
 		position: relative;
         width: 100%;  /* Full viewport width */
-		padding-top: 30%;
+		padding-top: 20%;
 	}
 	
 	.video-background video {
@@ -1073,19 +1094,32 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 
 	 .video-khehra video {
         width: 100%;  /* Full viewport width */
-		padding-top: 30%;
+		padding-top: 20%;
 }
 	 
 	 .video-background video {
         width: 100%;  /* Full viewport width */
-		top: 30%;
+		top: 20%;
 }
 	 
 	 	.content-under-video {
  position: relative; /* Adjust this container */
 	 }
+	
+	 .column .stats .aboutme {
+    position: relative;
+	top: 600px;
+	min-height: 350px;
+}
 
- @media (min-width: 560px) {
+ @media (max-width: 560px) {
+	
+	 .column .stats .aboutme {
+    position: relative;
+	top: 600px;
+	min-height: 350px;
+}
+	 
 
 	 .video-khehra video {
 		 position: relative;
@@ -1134,7 +1168,7 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 	  
 	  .video-background video {
         width: 100%;  /* Full viewport width */
-		top: 20%;
+		top: 0%;
       }
 	  .content-under-video {
  position: relative; /* Adjust this container */
@@ -1176,6 +1210,9 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 }
 
+	
+
+	 }
 
 	    /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
@@ -1233,6 +1270,7 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 }
 	}
+	 
   
   /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
@@ -1321,4 +1359,10 @@ text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
 .headshot {
 }
 .left {
+}
+.play {
+}
+.aboutme {
+}
+.logos {
 }
