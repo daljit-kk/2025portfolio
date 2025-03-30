@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/main.css">
-	<script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
   <title>Fizzy!</title>
 </head>
 <body>
-	 <nav id="navbar">
+   <nav id="navbar">
         <div id="navbar-left">
             <a href="index.html"><span id="name">Daljit Kaur Design</span></a>
         </div>
@@ -18,41 +18,63 @@
             <li><a href="about.html">About</a></li>
         </ul>
     </nav>
-  <header>
-    
-  </header>
+  <header></header>
+
   <section class="project-details">
-   
     <img src="img/fizzy_severalflavours.png" alt="Packaging design" class="cleo">
     <div class="row">
-              <div class="column stats">
-<h1>Fizzy</h1>
-<p><strong>LOGO | BRAND | PACKAGING | PRINT AND DIGITAL ADVERTISING </strong></p>
-<p><em>Context: Student Work</em></p>
+      <div class="column stats">
+        <h1>Fizzy</h1>
+        <p><strong>LOGO | BRAND | PACKAGING | PRINT AND DIGITAL ADVERTISING </strong></p>
+        <p><em>Context: Student Work</em></p>
       </div>
-              <div class="column">
-<p class="problem">Fizzy! is a hang-over-free party in a can. The target audience for this non-alcoholic, healthy beverage is 18-34-year-old Canadians (the wild party people always looking for a good time). Fizzy! is a drink that aims to bring fun-loving people together any time of the year. </p>
-                <p class="solution">Fizzy!‘s branding is unique thanks to our mascot named Izzy - something big brands aren’t really doing anymore, which sets us apart. The brand is fun, playful, and a bit feminine, and aims to delight and surprise at every touchpoint. From the packaging to advertisements to the web page, consumers are meant to feel immersed in this beachy, bubbly world. You’ll see that there’s a lot of play on the word “Fizz” and Canadian pride embedded into this brand. </p>
-        </div>
-    </div>
-    <div><img src="img/fizzyprintmockup.jpg" alt="" width="2100" height="1050" class="showcase"><img src="img/fizzydisplayads.jpg" alt="" width="2100" height="1050" class="showcase"><img src="img/fizzy-landing-page-mockup.jpg" alt="" width="2100" height="1050" class="showcase"><img src="img/billboard-mockup-day.jpg" alt="" width="2100" height="1050" class="showcase"></div><img src="img/billboard-mockup.jpg" alt="" width="2100" height="1050" class="showcase"></div><img src="img/billboard-mockup-night.jpg" alt="" width="2100" height="1050" class="showcase"></div>
-	  
-    <div class="column center">
-    <p><a href="index.html" class="learn-more-btn">HOME</a></p>
-    </div>
-    <footer>
-    <div class="footer-content">
-		    <h1><span id="dynamic-text-footer">Say Hi.</span></h1>
+      <div class="column">
+        <p class="problem">Fizzy is a hang-over-free party in a can that aims to bring 
+fun-loving people together any time of year. The target audience for this non-alcoholic beverage is 18-34-year-old Canadians.</p>
+        <p class="solution">Fizzy’s branding is unique thanks to our mascot named Izzy. The brand is playful and feminine, and aims to delight and surprise at every touchpoint. From the packaging to advertisements to the web page, consumers are meant to feel immersed in this beachy, bubbly world.
+ You’ll see that there’s a lot of play on the word “Fizz” and Canadian pride embedded into this brand.
 
-      <nav>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/">LinkedIn</a></li>
-          <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
-          <li><a href="about.html">About Me</a></li>
-        </ul>
-      </nav>
+</p>
+      </div>
     </div>
-  </footer>
-</section>
+
+    <!-- Image Gallery -->
+    <div class="image-gallery">
+        <img src="img/fizzy_mockups_updated_newlogo.png" alt="Fizzy Print Mockup" class="showcase">
+		<img src="img/fizzy_printmockup_updatedcan.png" alt="Fizzy Print Mockup" class="showcase">
+        <img src="img/fizzy_landingpage_updated.jpg" alt="Fizzy Landing Page Mockup" class="showcase">
+        <img src="img/fizzy_day_billboard_updated.png" alt="Fizzy Billboard Mockup Day" class="showcase">
+        <img src="img/fizzy_sunset_billboard_updated.png" alt="Fizzy Billboard Mockup" class="showcase">
+        <img src="img/fizzy_night_billboard_updated.jpg" alt="Fizzy Billboard Mockup Night" class="showcase">
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span id="closeBtn" class="close-btn">&times;</span>
+
+        <!-- Navigation arrows -->
+        <span id="prevArrow" class="arrow left-arrow">&#10094;</span>
+        <span id="nextArrow" class="arrow right-arrow">&#10095;</span>
+
+        <img id="lightboxImage" class="lightbox-image" src="" alt="">
+    </div>
+
+    <div class="column center">
+      <p><a href="index.html" class="learn-more-btn">HOME</a></p>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <h1><span id="dynamic-text-footer">Say Hi.</span></h1>
+        <nav>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/">LinkedIn</a></li>
+            <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
+            <li><a href="about.html">About Me</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </section>
 </body>
 </html>
