@@ -1,151 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/main.css">
-	<script src="js/main.js"></script>
-  <title>The Playground</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PLAY — Portfolio</title>
   <style>
-    /* Slideshow Container */
-    .slideshow-container {
-      position: relative;
-      max-width: 100%;
-      margin: auto;
-    }
 
-    .slides {
-      display: none;
-    }
 
-    /* Next/previous buttons */
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      padding: 16px;
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sticky Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navbar .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+	color: black
+}
+
+/* Desktop Navigation */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #0077ff;
+}
+
+/* Hamburger icon for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.mobile-menu a {
+  padding: 0.8rem 0;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+/* Mobile styles: switch at 600px */
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  /* default mobile menu is hidden; toggled via JS */
+  .mobile-menu {
+    display: none;
+  }
+  .mobile-menu.show {
+    display: flex;
+    flex-direction: column;
+  }
+}
+	  .footer {
+  background-color: #fff;
+  color: #121212;
+  padding: 3rem 2rem;
+  border-top: 1px solid #e6e6e6;
+  font-size: 0.95rem;
+}
+
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-heading {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  color: #888;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links li a {
+  color: #121212;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: #121212;
+  transition: width 0.3s ease;
+}
+
+.footer-links li a:hover::after {
+  width: 100%;
+}
+
+.footer-credit {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+
+
+	  
+	  body {
+      margin: 0;
+      font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+      background-color: black;
       color: white;
-      font-weight: bold;
-      font-size: 18px;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: white;
+    }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+      position: relative;
       cursor: pointer;
-      user-select: none;
-      background-color: rgba(0, 0, 0, 0.5);
-      border: none;
-      border-radius: 50%;
-      transform: translateY(-50%);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      background: white;
+      transition: transform 0.3s;
     }
 
-    .prev {
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+   .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* ensures it doesn’t overflow horizontally */
+  max-height: 100%;
+  padding: 1rem;
+  box-sizing: border-box; /* includes padding inside width */
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  word-wrap: break-word; /* breaks long words or URLs */
+  white-space: normal;   /* wraps lines instead of keeping in one line */
+}
+
+
+    .masonry-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay h2 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+    }
+
+    .overlay p {
+      margin: 0;
+      font-size: 0.85rem;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
       left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
     }
 
-    .next {
-      right: 0;
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
     }
 
-    /* Fade effect */
-    .fade {
-      animation-name: fade;
-      animation-duration: 1.5s;
+    .lightbox.show {
+      display: flex;
     }
 
-    @keyframes fade {
-      from {opacity: 0.4;}
-      to {opacity: 1;}
+    @media (max-width: 900px) {
+      .masonry {
+        column-count: 2;
+      }
     }
 
-    /* Style for buttons */
-    
-   
+    @media (max-width: 600px) {
+      .masonry {
+        column-count: 1;
+      }
 
+      header h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <nav id="navbar">
-    <div id="navbar-left">
-      <span id="name">Daljit Kaur Design</span>
-    </div>
-    <ul id="navbar-right">
-      <li><a href="index.html">Work</a></li>
-      <li><a href="playground.html">Playground</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
 
-	</header>
-  <section class="project-details">
-   
-    <img src="img/playground_header.png" alt="Packaging design" class="cleo">
-	  <section class="project-details">
-    <div class="row">
-      <div class="column play">
-        <h1>Where Design Meets <span id="dynamic-text-play">Experimentation.</span></h1>
-		  <p class="problem">Welcome to the Playground, a space for graphic design one-offs, concepts, personal explorations and experiments.</p>
-      </div>
-      <div class="column">
-      </div>
-    </div>
+	<nav class="navbar">
+  <div class="logo">Daljit Kaur Design</div>
+  <div class="nav-links">
+    <a href="index.html">Work</a>
+    <a href="playground.html">Playground</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="hamburger" onclick="toggleMobileMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+		
+		<!-- Move this here -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="playground.html">Playground</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
 
-    <!-- Slideshow Container -->
-    <div class="slideshow-container">
-      <!-- Slide 1: Video -->
-      <div class="slides fade">
-        <video class="showcase-video" autoplay muted loop controls>
-          <source src="img/khehra_square.mp4" type="video/mp4">
-        </video>
-      </div>
+  <header>
+    <h1>PLAY</h1>
+    <p>A space for experiments, sketches, loose thoughts, and happy accidents.</p>
+  </header>
 
-      <!-- Slide 2: Video -->
-      <div class="slides fade">
-        <video class="showcase-video-long" autoplay muted loop controls>
-          <source src="img/wolfhead_ad_rustic.mp4" type="video/mp4">
-        </video>
+  <div class="masonry">
+    <div class="masonry-item">
+      <img src="oneinonehundred_poster.png" alt="Ink Study" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>1 in 100</h2>
+        <p>Poster for an upcoming documentary about children with congenital heart disease.</p>
       </div>
-
-      <!-- Slide 3: Image -->
-      <div class="slides fade">
-        <img src="img/statueportrait.avif" alt="" width="2100" height="1050" class="showcase">
-      </div>
-
-      <!-- Slide 4: Image -->
-      <div class="slides fade">
-        <img src="img/portraitstogether.png" alt="" width="2100" height="1050" class="showcase">
-      </div>
-
-      <!-- Slide 5: Image -->
-      <div class="slides fade">
-        <img src="img/rezaabedini_mockup.png" alt="" width="2100" height="1050" class="showcase">
-      </div>
-
-      <!-- Slide 6: Image -->
-      <div class="slides fade">
-        <img src="img/intothewilderness_mockup.png" alt="" width="4096" height="4096" class="showcase">
-      </div>
-
-      <!-- Navigation buttons -->
-      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-      <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
 
-    <div class="column center">
-      <p><a href="index.html" class="learn-more-btn">HOME</a></p>
+    <div class="masonry-item">
+      <img src="img/rezaabedini_mockup.png" alt="Sketchbook Page" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Swan Lake in Dubai</h2>
+        <p>Arabic and Latin typographic poster, inspired by the work of Reza Abedini.</p>
+      </div>
     </div>
 
-    <footer>
-    <div class="footer-content">
-		    <h1><span id="dynamic-text-footer">Say Hi.</span></h1>
-
-      <nav>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/">LinkedIn</a></li>
-          <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
-          <li><a href="about.html">About Me</a></li>
-        </ul>
-      </nav>
+    <div class="masonry-item">
+      <img src="img/InTransit-hero.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>In Transit Magazine</h2>
+        <p>Magazine positioning the Arctic as a viable workplace to early career professionals.</p>
+      </div>
     </div>
-  </footer>
-  </section>
+	  <div class="masonry-item">
+      <img src="img/intothewilderness_mockup.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Into the Wilderness</h2>
+        <p> cover concept for a mystery novel.</p>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
+      <img src="img/statueportrait.avif" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Pencil Statue Rendering</h2>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
+      <img src="img/arabgirl.jpg" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Lead Pencil Portrait</h2>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
+      <img src="img/harsharn.jpg" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Portrait of my sister</h2>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
+      <img src="img/20250216_143054.jpg" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Octopus Pointilism</h2>
+      </div>
+    </div>
+	  
+	   <div class="masonry-item">
+      <img src="img/greenasitgets.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Green as it Gets</h2>
+        <p>Logo for an eco-friendly landscaping company.</p>
+      </div>
+    </div>
+
+    <!-- Add more items here -->
+  </div>
+
+  <!-- Lightbox container -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
   <script>
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = src;
+      lightbox.classList.add('show');
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('show');
+    }
+  </script>
+    <footer class="footer">
+  <div class="footer-inner">
+    <h2 class="footer-heading">Let's Connect!</h2>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank">LinkedIn</a></li>
+      <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
+    </ul>
+    <p class="footer-credit">2025 Daljit Kaur Design</p>
+  </div>
+</footer>
+  <script>
+	  
+	  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("show");
+		  
+		  document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.remove('show');
+  });
+});
+
+  }
+	  
     let slideIndex = 1; // Start from the first slide
     const slides = document.getElementsByClassName("slides");
 

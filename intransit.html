@@ -1,79 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/main.css">
-	<script src="js/main.js"></script>
-  <title>In Transit</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daljit Kaur – Project Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+	  
+	  /* Sticky Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navbar .logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+	color: black
+}
+
+/* Desktop Navigation */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #0077ff;
+}
+
+/* Hamburger icon for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 3px;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.mobile-menu a {
+  padding: 0.8rem 0;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+/* Mobile styles: switch at 600px */
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  /* default mobile menu is hidden; toggled via JS */
+  .mobile-menu {
+    display: none;
+  }
+  .mobile-menu.show {
+    display: flex;
+    flex-direction: column;
+  }
+}
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .hero {
+      width: 100%; /* Spans full width */
+      height: auto;
+      margin-bottom: 2rem;
+      display: block;
+      object-fit: cover;
+      object-position: center center; /* Ensures image is centered */
+    }
+
+    .project-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: #bbb;
+      margin-bottom: 2rem;
+    }
+
+    .grid-3col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .grid-3col > div {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .grid-3col h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .grid-3col p {
+      font-size: 1.05rem;
+      color: #bbb;
+    }
+
+    .full-image {
+  display: block;
+  width: 100%;
+  margin: 2rem 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+
+    .full-image:hover {
+      transform: scale(1.01);
+    }
+
+    .side-by-side {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .side-by-side div {
+      flex: 1;
+      min-width: 250px;
+    }
+
+.footer {
+  background-color: #fff;
+  color: #121212;
+  padding: 3rem 2rem;
+  border-top: 1px solid #e6e6e6;
+  font-size: 0.95rem;
+}
+
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-heading {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  color: #888;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links li a {
+  color: #121212;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: #121212;
+  transition: width 0.3s ease;
+}
+
+.footer-links li a:hover::after {
+  width: 100%;
+}
+
+.footer-credit {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+    .project-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+
+    .project-navigation button {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid #fff;
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .project-navigation button:hover {
+      background-color: #fff;
+      color: #121212;
+    }
+
+    /* Lightbox styles */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 767px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Fade-in animation
+    const fadeInElements = document.querySelectorAll('.fade-in');
+    fadeInElements.forEach((el, index) => {
+      el.style.transitionDelay = `${index * 0.3}s`;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeInElements.forEach(el => {
+      observer.observe(el);
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('in-view');
+      }
+    });
+  });
+
+  // ✅ Define the function for mobile menu toggle
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('show');
+  }
+
+  // Lightbox functionality
+  function openLightbox(src) {
+    const overlay = document.createElement('div');
+    overlay.classList.add('lightbox-overlay');
+    const img = document.createElement('img');
+    img.src = src;
+    overlay.appendChild(img);
+
+    overlay.addEventListener('click', () => {
+      overlay.remove(); // Clean removal
+    });
+
+    document.body.appendChild(overlay);
+    overlay.style.display = 'flex';
+  }
+</script>
+
+
 </head>
 <body>
-	 <nav id="navbar">
-        <div id="navbar-left">
-            <a href="index.html"><span id="name">Daljit Kaur Design</span></a>
-        </div>
-        <ul id="navbar-right">
-            <li><a href="index.html">Work</a></li>
-            <li><a href="playground.html">Playground</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav>
-  <header>
-    
-  </header>
-  <section class="project-details">
-   
-    <img src="img/it-hero.jpg" alt="Packaging design" class="cleo">
-    <div class="row">
-              <div class="column stats">
-<h1>In Transit Magazine</h1>
-<p><strong>EDITORIAL DESIGN | PAGE LAYOUT | ART DIRECTION </strong></p>
-<p><em>Context: Student Work</em></p>
-      </div>
-              <div class="column">
-<p class="problem">This issue of In Transit Magazine is targeted at young professionals (aged 21-35) with a taste for adventure actively seeking new career opportunities and unique travel experiences. The objective of this issue was redefining the Arctic as a viable workplace, blending business and adventure to showcase it as more than a tourist destination.</p>
-                <p class="solution">The strategy was marrying the Arctic environment and corporate lifestyle. Various layout techniques were employed to ensure each page held surprises, reflecting the region’s fast-paced potential as a workplace. Each story features distinct color palettes and treatments, while consistent typography, use of negative space, and sticky notes create cohesion. </p>
-        </div>
-    </div>
+<nav class="navbar">
+  <div class="logo">Daljit Kaur Design</div>
+  <div class="nav-links">
+    <a href="index.html">Work</a>
+    <a href="playground.html">Playground</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="hamburger" onclick="toggleMobileMenu()">
     <div></div>
+    <div></div>
+    <div></div>
+  </div>
+		
+		<!-- Move this here -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Work</a>
+    <a href="playground.html">Playground</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+	
+  <img src="img/fizzy_severalflavours.png" alt="Project Hero" class="hero fade-in" onclick="openLightbox(this.src)" />
+  
+  <main class="container">
+    <h1 class="project-title fade-in">Gordie Howe Bridge Rose Bike Rack Design</h1>
+    <div class="breadcrumbs fade-in">Bike Rack Design / Placemaking / Contest Finalist</div>
 
-    <!-- Image Gallery -->
-    <div class="image-gallery">
-        <img src="img/it-spreads.jpg" alt="In Transit Spreads Mockup" class="showcase">
-		<img src="img/it-one.jpg" alt="Spead 1 Mockup" class="showcase">
-        <img src="img/it-two.jpg" alt="Spread 2 Mockup" class="showcase">
-        <img src="img/intransit_spreadthree.jpg" alt="Spread 3 Mockup" class="showcase">
-    </div>
-
-     </div>
-
-    <!-- Lightbox Modal -->
-    <div id="lightboxModal" class="lightbox-modal">
-        <span id="closeBtn" class="close-btn">&times;</span>
-
-        <!-- Navigation arrows -->
-        <span id="prevArrow" class="arrow left-arrow">&#10094;</span>
-        <span id="nextArrow" class="arrow right-arrow">&#10095;</span>
-
-        <img id="lightboxImage" class="lightbox-image" src="" alt="">
-    </div>
-
-    <div class="column center">
-      <p><a href="index.html" class="learn-more-btn">HOME</a></p>
-    </div>
-
-    <footer>
-      <div class="footer-content">
-        <h1><span id="dynamic-text-footer">Say Hi.</span></h1>
-        <nav>
-          <ul>
-            <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/">LinkedIn</a></li>
-            <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
-            <li><a href="about.html">About Me</a></li>
-          </ul>
-        </nav>
+    <div class="grid-3col">
+      <div>
+        <h2 class="fade-in">Team Members</h2>
+        <p class="fade-in">Daljit Kaur Khehra</p>
+		  <p class="fade-in">David Le</p>
+		  <h2 class="fade-in">Tools Used</h2>
+        <p class="fade-in">Blender</p>
+		  <p class="fade-in">AutoCAD</p>
       </div>
-    </footer>
-  </section>
+      <div>
+        <h2 class="fade-in">Problem</h2>
+        <p class="fade-in">Fizzy is a hang-over-free party in a can that aims to bring fun-loving people together any time of year. The target audience for this non-alcoholic beverage is 18-34-year-old Canadians.</p>
+      </div>
+      <div>
+        <h2 class="fade-in">Solution</h2>
+        <p class="fade-in">Our design concept is based on the different stages of a blooming rose. The design consists of 4 upright roses that progressively increase in height and change subtly in appearance. Each rose resembles a different stage of the rose blooming from a bud to a fully-formed rose. The design celebrates and reflects the host community of Sandwich/West Windsor since Windsor is known as “The Rose City.” It also reflects Sandwich Town's growth as a community with the Gordie Howe International Bridge linking it to Detroit, attracting new visitors and businesses. As a result, the town is now being referred to as “New Sandwich Town," with our bike rack adding to the story of it growing and flourishing as a community. Furthermore, the bike racks are embedded into the concrete pad rather than having a minimum of 2 ground-anchoring elements to allow for secure mounting to the concrete pad. By doing so, the design truly resembles a rose growing from the ground. This adds to its appeal not only as a representation of the host communities but also as a piece of art integrated into the surrounding environment. For those who don’t know the full story behind the bike rack, they can still view and enjoy them as pleasant art pieces while sparking curiosity about the meaning behind the design.</p>
+      </div>
+    </div>
+
+    <img src="img/fizzy_mockups_updated_newlogo.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+	  <img src="img/fizzy_printmockup_updatedcan.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+	  <img src="img/fizzy_landingpage_updated.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+	  <img src="img/fizzy_day_billboard_updated.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+	  <img src="img/fizzy_sunset_billboard_updated.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+    <img src="img/fizzy_night_billboard_updated.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+
+    <div class="side-by-side">
+      <div>
+        <h2>Process</h2>
+        <p>Description of your design process, key decisions, tools used, etc.</p>
+      </div>
+      <div>
+        <h2>Sketches</h2>
+        <p>Talk about ideation, initial explorations, and sketches.</p>
+      </div>
+    </div>
+
+    <div class="project-navigation">
+      <a href="wolfhead.html">
+      <button>Previous Project</button>
+      </a>
+      <a href="planner.html">
+      <button>Next Project</button>
+    </a></div>
+  </main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <h2 class="footer-heading">Let's Connect!</h2>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank">LinkedIn</a></li>
+      <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
+    </ul>
+    <p class="footer-credit">2025 Daljit Kaur Design</p>
+  </div>
+</footer>
+
+
+
 </body>
 </html>

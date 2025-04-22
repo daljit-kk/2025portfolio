@@ -174,6 +174,15 @@
       color: #bbb;
     }
 
+	  #project-video {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensures the video fits within the container while preserving its aspect ratio */
+  max-height: 75vh; /* Limits the height of the video, adjust as needed */
+  border-radius: 10px;
+}
+
+	  
     .full-image {
   display: block;
   width: 100%;
@@ -198,6 +207,26 @@
       flex: 1;
       min-width: 250px;
     }
+	  
+	  .side-by-side {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Creates flexible columns */
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.side-by-side img {
+  width: 100%; /* Ensures images fill the available space */
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.side-by-side img:hover {
+  transform: scale(1.05); /* Adds hover effect */
+}
+
 
 .footer {
   background-color: #fff;
@@ -370,7 +399,7 @@
 
 </head>
 <body>
-  	<nav class="navbar">
+<nav class="navbar">
   <div class="logo">Daljit Kaur Design</div>
   <div class="nav-links">
     <a href="index.html">Work</a>
@@ -391,36 +420,64 @@
   </div>
 </nav>
 	
-  <img src="img/swc-cover.jpg" alt="Project Hero" class="hero fade-in" onclick="openLightbox(this.src)" />
+  <img src="img/wolfhead_header_sharp.jpg" alt="Project Hero" class="hero fade-in" onclick="openLightbox(this.src)" />
   
   <main class="container">
-    <h1 class="project-title fade-in">Shared Waters Conservancy</h1>
-    <div class="breadcrumbs fade-in">Rebrand / Information Design / Public Engagement Strategy / Reports / Social Media / Student Work</div>
+    <h1 class="project-title fade-in">The Gift of Wolfhead</h1>
+    <div class="breadcrumbs fade-in">Motion Graphics / Social Media / Student Work</div>
 
     <div class="grid-3col">
-      <div>
+		<div>
+        <h2 class="fade-in">Tools</h2>
+        <p class="fade-in">Cinema 4D </p>
+			<p class="fade-in">After Effects </p>
+			<p class="fade-in">Premiere Pro </p>
+      </div>
+		<div>
         <h2 class="fade-in">Problem</h2>
-        <p class="fade-in">The International Joint Commission offers fantastic Public and Indigenous Engagements, press collaborations, and more. However, its current non-engaging brand hinders public engagement.</p>
+        <p class="fade-in">Wolfhead Distillery has asked for a 13-second motion ad for Instagram that would promote the launch of their new gift cards. </p>
       </div>
       <div>
         <h2 class="fade-in">Solution</h2>
-        <p class="fade-in">The target audience for this rebrand of the IJC is professionals outside the environmental industries. This innovative rebrand aims to encourage engagement from industry outsiders, helping the organization achieve its public engagement objectives. The strategic objective was transforming the International Joint Commission into the “Shared Waters Conservancy,” emphasizing innovation and a “human touch” in the refreshed identity.</p>
+        <p class="fade-in"> This animation is rustic, charming, and a little wild.</p>
       </div>
     </div>
 
-    <img src="img/swcbusinesscard.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/swc_quarterlyreport.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/swc-socials.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/swc-infographic.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-  
+   <video id="project-video" class="hero fade-in" controls autoplay loop>
+  <source src="img/wolfhead_ad_rustic.mp4" type="video/mp4">
+</video>
+	  
+    
+      <div>
+        <h2>Process</h2>
+        <p>Main hero card turn, made in Cinema 4D.</p>
+		  <video id="project-video" class="hero fade-in" controls autoplay loop>
+  <source src="img/card-camera-turn.mp4" type="video/mp4">
+</video>
+		  <p>Cards sliding open, made in Cinema 4D.</p>
+		  <video id="project-video" class="hero fade-in" controls autoplay loop>
+  <source src="img/card-slide.mp4" type="video/mp4">
+</video>
+      <div>
+  <h2>Storyboard</h2>
+  <div class="side-by-side">
+    <img src="img/wolfheadstoryboard.png" alt="Storyboard 1" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+    <img src="img/wolfheadstoryboardtwo.png" alt="Storyboard 2" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+    <img src="img/wolfheadstoryboardthree.png" alt="Storyboard 3" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+    <img src="img/wolfheadstoryboardfour.png" alt="Storyboard 4" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+    <img src="img/wolfheadstoryboardfive.png" alt="Storyboard 5" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+    <img src="img/wolfheadstoryboardsix.png" alt="Storyboard 6" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+  </div>
+</div>
+
 
     <div class="project-navigation">
-      <a href="pda.html">
+      <a href="artinmotion.html">
       <button>Previous Project</button>
       </a>
-      <a href="projectone.html">
+      <a href="intransit.html">
       <button>Next Project</button>
-    </a></div>
+</a></div>
   </main>
 
 <footer class="footer">
