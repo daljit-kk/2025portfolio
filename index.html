@@ -1,220 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/main.css">
-  <title>Daljit Kaur Design</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daljit Kaur – Project Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-in.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .typing-container {
+      position: relative;
+      text-align: center;
+		margin: 2rem;
+
+    }
+
+    .typing-container h1 {
+      font-size: 2.2rem;
+      color: white;
+      margin: 1rem;
+    }
+
+    .typing-container p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin: 1rem;
+    }
+
+    .typing-container a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .typing-container a:hover {
+      background-color: white;
+      color: #121212;
+    }
+
+    .scroll-icon {
+      margin-top: 2rem;
+      font-size: 1.8rem;
+      color: white;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+	   .logo-marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .logo-track {
+      display: inline-block;
+      animation: scroll 20s linear infinite;
+    }
+
+    .logo-track img {
+      height: 40px;
+      margin: 0 2rem;
+      vertical-align: middle;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+	  
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .navbar .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: black;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #0077ff;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      border-radius: 3px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .mobile-menu a {
+      padding: 0.8rem 0;
+      text-decoration: none;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-menu.show {
+        display: flex;
+      }
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-video {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .design-philosophy {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .design-philosophy h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .design-philosophy p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .side-by-side {
+      display: flex;
+		margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .side-by-side > div {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .side-by-side img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .side-by-side h3 {
+      margin: 1rem 0 0.5rem;
+    }
+
+    .side-by-side button {
+      background: black;
+      color: white;
+      border: 2px solid white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .testimonial-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 2rem;
+      scroll-snap-type: x mandatory;
+      margin-top: 4rem;
+    }
+
+    .testimonial-slider > div {
+      min-width: 300px;
+      background: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 10px;
+      scroll-snap-align: start;
+    }
+
+    .testimonial-slider p {
+      color: #bbb;
+    }
+
+    .footer {
+      background-color: #fff;
+      color: #121212;
+      padding: 3rem 2rem;
+      border-top: 1px solid #e6e6e6;
+      font-size: 0.95rem;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-heading {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      color: #888;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links li a {
+      color: #121212;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1px;
+      background-color: #121212;
+      transition: width 0.3s ease;
+    }
+
+    .footer-links li a:hover::after {
+      width: 100%;
+    }
+
+    .footer-credit {
+      font-size: 0.85rem;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-	 <nav id="navbar">
-        <div id="navbar-left">
-            <a href="index.html"><span id="name"><script src="js/main.js"></script> Daljit Kaur Design</span></a>
-        </div>
-        <ul id="navbar-right">
-            <li><a href="index.html">Work</a></li>
-            <li><a href="playground.html">Playground</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </nav>
-  <header>
-    
-  </header>
-<section class="project-details">
-   
-     <div class="video-khehra">
-            <!-- MP4 Video Background with autoplay, loop, and mute -->
-            <video autoplay loop muted class="video-khehra" playsinline>
-                <source src="img/background.mp4">
-            </video>
-            
-	</div>
-
-		
-	   <div class="content-under-video">
-  <div class="center manifesto">
-    <h1> There's a unique story to tell behind every <span id="dynamic-text">logo.</span></h1>
-    <h1></h1>
-    <p>I use multidisciplinary design as a tool to solve problems, tell stories, and connect audiences.<p>  
-      <a href="about.html">
-      <button class="learn-more-btn">LEARN MORE</button>
-      </a>
+  <nav class="navbar">
+    <div class="logo">Daljit Kaur Design</div>
+    <div class="nav-links">
+      <a href="index.html">Work</a>
+      <a href="playground.html">Playground</a>
+      <a href="about.html">About</a>
     </div>
-  <div class="row logos">
-    <div id="logo-banner">
-      <div class="logo-container">
-        <img src="img/mclogo.svg" alt="Logo 1">
-        <img src="img/logo.svg" alt="Logo 2">
-        <img src="img/Thrive Logo - Circle T black and white.png" alt="Logo 3">
-        <img src="img/L-RocketInnovationStudio-2C-Rvsd-Vert-P1126591 (2).png" alt="Logo 4">
-        <img src="img/logo-stclair-research-2x.png" alt="Logo 3">
-        <!-- Repeat the logos here to create the illusion of a continuous loop -->
-        <img src="img/mclogo.svg" alt="Logo 1">
-        <img src="img/logo.svg" alt="Logo 2">
-        <img src="img/Thrive Logo - Circle T black and white.png" alt="Logo 3">
-        <img src="img/L-RocketInnovationStudio-2C-Rvsd-Vert-P1126591 (2).png" alt="Logo 4">
-        <img src="img/logo-stclair-research-2x.png" alt="Logo 3">
-        <!-- Repeat the logos here to create the illusion of a continuous loop -->
-        <img src="img/mclogo.svg" alt="Logo 1">
-        <img src="img/logo.svg" alt="Logo 2">
-        <img src="img/Thrive Logo - Circle T black and white.png" alt="Logo 3">
-        <img src="img/L-RocketInnovationStudio-2C-Rvsd-Vert-P1126591 (2).png" alt="Logo 4">
-        <img src="img/logo-stclair-research-2x.png" alt="Logo 3">
-      </div>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Work</a>
+      <a href="playground.html">Playground</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="img/motionreel.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+	
+
+
+  
+	<div class="typing-container">
+      <h1>There's a unique story to tell behind every <span id="typed"></span></h1>
+      <p>I use multidisciplinary design as a tool to solve problems, tell stories, and connect audiences.</p>
+      <a href="about.html">Learn More</a>
+      <div class="scroll-icon"><i class="fas fa-chevron-down"></i></div>
+
+    </div>
+  
+
+  
+	<div class="container fade-in">
+   <!-- First Row -->
+<div class="side-by-side">
+  <div>
+    <a href="projectone.html"><img src="img/cleo_hero.jpg" alt="Project 1" /></a>
+    <h3>Cosmetics that Resurrect <a href="projectone.html">Ancient</a> Egypt</h3>
+    <a href="projectone.html">
+      <button>Go Back in Time</button>
+    </a>
   </div>
+  <div>
+    <a href="fizzy.html"><img src="img/fizzy_mockups.png" alt="Project 2" /></a>
+    <h3><a href="fizzy.html">Beverages for the Responsibly Irresponsible</a></h3>
+    <a href="fizzy.html">
+      <button>Crack Open</button>
+    </a>
+  </div>
+</div>
+
+<!-- Second Row -->
+<div class="side-by-side">
+  <div>
+    <a href="artinmotion.html"><img src="img/artinmotiontile.jpg" alt="Project 1 Duplicate" /></a>
+    <h3>Art that Comes to Life<a href="artinmotion.html"></a></h3>
+    <a href="artinmotion.html">
+      <button>View Now</button>
+    </a>
+  </div>
+  <div>
+    <a href="wolfhead.html"><img src="img/wolfhead_tile.jpg" alt="Project 2 Duplicate" /></a>
+    <h3><a href="wolfhead.html">An Irresistable Gift</a></h3>
+    <a href="wolfhead.html">
+      <button>See More</button>
+    </a>
+  </div>
+</div>
+		<!-- First Row -->
+<div class="side-by-side">
+  <div>
+    <a href="intransit.html"><img src="bikerack-tile.png" alt="Project 1" /></a>
+    <h3>A Bike Rack that Inspires the City <a href="intransit.html"></a></h3>
+    <a href="intransit.html">
+      <button>Join the Ride</button>
+    </a>
+  </div>
+  <div>
+    <a href="planner.html"><img src="img/plannermockup.png" alt="Project 2" /></a>
+    <h3><a href="planner.html">A Bold Start to the New Year</a></h3>
+    <a href="planner.html">
+      <button>Learn More</button>
+    </a>
+  </div>
+</div>
+
+<!-- Second Row -->
+<div class="side-by-side">
+  <div>
+    <a href="pda.html"><img src="img/patty-duke-tile.png" alt="Project 1 Duplicate" /></a>
+    <h3>A Rebrand that Deserves the Spotlight<a href="pda.html"></a></h3>
+    <a href="pda.html">
+      <button>Discover Now</button>
+    </a>
+  </div>
+  <div>
+    <a href="swc.html"><img src="img/swc_postone.jpg" alt="Project 2 Duplicate" /></a>
+    <h3><a href="swc.html">A Conservation Brand with a Human Touch</a></h3>
+    <a href="swc.html">
+      <button>Dive In</button>
+    </a>
+  </div>
+</div>
+ 
 	  
-	  
-	  </section>
-    
-    <!-- Right column for project image -->
-    </div>
-	
-	<div id="image-gallery">
-  <div class="image-row">
-    <!-- First image -->
-    <div class="projectbox">
-      <div class="image-container"> <a href="projectone.html"><img src="img/cleo_hero.jpg" alt="Image 1"></a>
-      </div>
-      <div class="introtext left">
-        <h1>Cosmetics that Resurrect Ancient Egypt</h1>
-		  <a href="projectone.html"><button class="learn-more-btn-two"><strong>Go Back in Time</strong></button></a>
-</div>
-</div>
-	  <!-- Second image -->
-    <div class="projectbox">
-      <div class="image-container"> <a href="fizzy.html"><img src="img/fizzy_mockups.png" alt="Image 2"></a>
-        <div class="hover-text">
-      
-          </div>
-      </div>
-      <div class="introtext right">
-        <h1>Beverages for the Responsibly Irresponsible</h1>
-        <a href="fizzy.html">
-          <button class="learn-more-btn-two"><strong>Crack Open</strong></button>
-        </a> </div>
-    </div>
-  </div>
-		<div class="image-row">
-    <!-- Third image -->
-    <div class="projectbox">
-      <div class="image-container"> <a href="artinmotion.html"><img src="img/artinmotiontile.jpg" alt="Image 3"></a>
-        <div class="hover-text">
-          </div>
-      </div>
-      <div class="introtext">
-        <h1>Art that Comes to Life</h1>
-        <a href="artinmotion.html">
-          <button class="learn-more-btn-two"><strong>Explore Now</strong></button>
-        </a></div>
-    </div>
-<!-- Fourth image -->
-    <div class="projectbox">
-      <div class="image-container"> <a href="wolfhead.html"><img src="img/wolfhead_tile.jpg" alt="Image 4"></a>
-        <div class="hover-text">
-          </div>
-      </div>
-      <div class="introtext">
-        <h1>An Irresistable Holiday Gift</h1>
-        <a href="wolfhead.html">
-          <button class="learn-more-btn-two"><strong>Learn More&nbsp;</strong></button>
-        </a></div>
-    </div>
-  </div>
-		<div class="image-row">
-    <!-- Third image -->
-    <div class="projectbox">
-      <div class="image-container"><img src="img/bike-rack-tile-sq.jpg" alt="Image 3"></a>
-        <div class="hover-text">
-          </div>
-      </div>
-      <div class="introtext">
-        <h1>A Bike Rack That Inspires a City</h1>
-        <a href="intransit.html">
-          <button class="learn-more-btn-two"><strong>Coming Soon</strong></button>
-        </a></div>
-    </div>
-<!-- Fourth image -->
-    <div class="projectbox">
-      <div class="image-container"> <a href="planner.html"><img src="img/plannermockup.png" alt="Image 4"></a>
-        <div class="hover-text">
-          </div>
-      </div>
-      <div class="introtext">
-        <h1>A Bold Start to the New Year</h1>
-        <a href="planner.html">
-          <button class="learn-more-btn-two"><strong>Learn More&nbsp;</strong></button>
-        </a></div>
-    </div>
-  </div>
-<div class="image-row">
-    <!-- Fifth image -->
-    <div class="projectbox">
-      <div class="image-container"> <a href="pda.html"><img src="img/patty-duke-tile.png" alt="Image 5"></a>
-        <div class="hover-text">
-          </div>
-      </div>
-      <div class="introtext">
-        <h1>A Rebrand that Deserves the Spotlight</h1>
-        <a href="pda.html">
-          <button class="learn-more-btn-two"><strong>Discover</strong></button>
-        </a></div>
-    </div>
-	
-	<!-- Sixth image -->
-    <div class="projectbox">
-      <div class="image-container"> <a href="swc.html"><img src="img/swc_postone.jpg" alt="Image 6"></a>
-        <div class="hover-text">
-          </div>
-      </div>
-      <div class="introtext">
-        <h1>A Conservation Brand with a Human Touch</h1>
-        <a href="swc.html">
-          <button class="learn-more-btn-two"><strong>Dive In</strong></button>
-        </a></div>
-    </div>
-  </div>
-</div>
 
-	</div>
-  <section id="testimonials">
-    <div class="testimonial-container">
-      <h1 id="dynamic-text">Testimonials</h1>
-      <!-- Slider -->
-      <div class="testimonial-slider">
-        <div class="testimonial-slide">
-          <p class="testimonial-quote">"To say Daljit went above and beyond expectations is an understatement."</p>
-          <p class="testimonial-author">- Michael Reagan, Two Birds Program Director</p>
-        </div>
-        <div class="testimonial-slide">
-          <p class="testimonial-quote">"Incredibly classy."</p>
-          <p class="testimonial-author">- Michael Pearce, The Patty Duke Family Foundation</p>
-        </div>
-        
+    <div class="testimonial-slider">
+      <div>
+        <p>"To say Daljit went above and beyond expectations is an understatement."</p>
+        <p style="margin-top: 0.5rem; color: #888;">— Michael Reagan, Design Director, Two Birds, LLC.</p>
       </div>
-      <a href="mailto:daljitkaurdesign@gmail.com">
-      <button class="learn-more-btn">GET IN TOUCH</button> 
-      </a>      <!-- Arrows -->
-      <div class="slider-arrows">
-        <button class="prev-arrow">←</button>
-        <button class="next-arrow">→</button>
+      <div>
+        <p>"I am pleased to recommend Daljit as a talented and creative graphic designer. Her attention to detail and strong work ethic set her apart and she always adds value through her fresh ideas and capabilities."</p>
+        <p style="margin-top: 0.5rem; color: #888;">— Sonja Popovski, Business Development Manager, St. Clair College Research and Innovation</p>
+      </div>
+      <div>
+        <p>"Incredibly classy."</p>
+        <p style="margin-top: 0.5rem; color: #888;">— Michael Pearce, The Patty Duke Family Foundation</p>
       </div>
     </div>
-  </section>
-	
-	<footer>
-    <div class="footer-content">
-		    <h1><span id="dynamic-text-footer">Say Hi.</span></h1>
+  </div>
 
-      <nav>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/">LinkedIn</a></li>
-          <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
-          <li><a href="about.html">About Me</a></li>
-        </ul>
-      </nav>
+  <footer class="footer">
+    <div class="footer-inner">
+      <h2 class="footer-heading">Let's Connect!</h2>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank">LinkedIn</a></li>
+        <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
+      </ul>
+      <p class="footer-credit">2025 Daljit Kaur Design</p>
     </div>
   </footer>
-    </div>
-	</section>
+
+   <script>
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('show');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const fadeInElements = document.querySelectorAll('.fade-in');
+      fadeInElements.forEach((el, index) => {
+        el.style.transitionDelay = `${index * 0.3}s`;
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      fadeInElements.forEach(el => {
+        observer.observe(el);
+      });
+
+      const words = ["ad.", "logo.", "package.", "video.", "brand."];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let typing = true;
+      const typedSpan = document.getElementById("typed");
+      typedSpan.textContent = '';
+
+      function type() {
+        if (typing) {
+          if (charIndex < words[wordIndex].length) {
+            typedSpan.textContent += words[wordIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+          } else {
+            typing = false;
+            setTimeout(type, 1500);
+          }
+        } else {
+          if (charIndex > 0) {
+            typedSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(type, 50);
+          } else {
+            typing = true;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 300);
+          }
+        }
+      }
+
+      type();
+    });
+  </script>
 </body>
 </html>
