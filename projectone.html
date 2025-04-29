@@ -140,6 +140,13 @@
       object-fit: cover;
       object-position: center center; /* Ensures image is centered */
     }
+	  
+	  .full-video {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
 
     .project-title {
       font-size: 2.5rem;
@@ -410,9 +417,14 @@
     </div>
 
     <img src="img/cleo-combo-pics.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+	  <video class="full-video fade-in" autoplay loop muted playsinline>
+  <source src="img/video-cleo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
     <img src="img/adcc_cleo.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
     <img src="img/Cleo-BrandGuidelines.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
     <img src="img/cleo-socialmedia.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+	  
 
     <div class="project-navigation">
       <a href="swc.html">
