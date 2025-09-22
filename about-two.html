@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daljit Kaur – Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts: Syne (headlines) + Karla (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Karla', sans-serif;
+      background-color: white;
+      color: #121212;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Sticky Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .navbar .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: black;
+    }
+
+    /* Desktop Navigation */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .nav-links a {
+      color: #333;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #0077ff;
+    }
+
+    /* Hamburger icon for mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      border-radius: 3px;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      font-family: syne;
+		display: none;
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .mobile-menu a {
+      padding: 0.8rem 0;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-menu {
+        display: none;
+      }
+      .mobile-menu.show {
+        display: flex;
+      }
+    }
+
+    /* ---------- CONTAINER ---------- */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ---------- ABOUT SECTION ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .intro-text h1 {
+      margin-bottom: 1rem;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    /* ---------- SECTIONS ---------- */
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      margin-bottom: 1rem;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .section li {
+      margin-bottom: 0.75rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skills-list span {
+      background: #f3f3f3;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+	  
+	  .btn {
+      display: inline-block;
+      padding: 0.5rem 3rem;
+      border: 2px solid #111;
+      border-radius: 999px;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: regular;
+      letter-spacing: 0.5px;
+      background: transparent;
+      color: #111;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      width: fit-content;
+    }
+	
+	.btn:hover {
+      background: #111;
+      color: #fff;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background-color: #fff;
+      color: #121212;
+      padding: 3rem 2rem;
+      border-top: 1px solid #e6e6e6;
+      font-size: 0.95rem;
+      margin-top: 4rem;
+		font: syne;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-heading {
+      font-size: 1.5rem;
+		font-family: syne;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      color: #888;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links li a {
+      color: #121212;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links li a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1px;
+      background-color: #121212;
+      transition: width 0.3s ease;
+    }
+
+    .footer-links li a:hover::after {
+      width: 100%;
+    }
+
+    .footer-credit {
+      font-size: 0.85rem;
+      color: #999;
+    }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">daljit kaur design</div>
+    <div class="nav-links">
+      <a href="index.html">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="testnewconetsogalanding.html">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="about-two.html">ABOUT</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Intro Section -->
+    <section class="about-grid">
+      <div class="intro-text">
+        <h1>creativity &amp; strategy</h1>
+        <p>
+          Daljit Kaur Khehra, Student RGD, is a multidisciplinary designer with 3 years of experience across studio, agency, start-up, and corporate environments. She has supported brands such as LEGO, Starbucks, Bausch & Lomb, Topco, Caesars Windsor, Rocket Innovation Studio (part of Rocket Mortgage), and the Patty Duke Foundation through graphic design, video editing, motion graphics, social media management, and retouching.
+        </p>
+        <p>
+          With a background in the sciences before pivoting to graphic design, Daljit's strengths lie in increasing brand visibility, cross-disciplinary collaboration, strategic thinking, and storytelling. Looking ahead, Daljit aims to continue shaping content and strategic direction in the design and advertising space, with the long-term goal of becoming an art director.<br>
+          <br>
+        </p> 
+		<a href="projectone.html" class="btn">View Resume</a>  
+		  
+      </div>
+		
+      <div class="about-photo">
+        <img src="Screenshot 2025-09-14 at 9.23.03 PM.png" alt="Portrait of Daljit Kaur">
+      </div>
+    </section>
+
+    <!-- Resume Sections -->
+    <section class="section">
+      <h2>Experience</h2>
+      <ul>
+        <li><strong>Global Content Studio Intern, Marks (Propelis/SGS & Co.)</strong>
+		<li>May 2025 – August 2025</li>
+        <li><strong>Design Intern, Tango Creative Group</strong> <br>
+<li>March 2025 – April 2025</li>
+        <li><strong>Digital Media Creator Intern, Rocket Innovation Studio</strong> <br>
+<li>May 2024 – August 2024</li>
+        <li><strong>Graphic Designer, St. Clair College Research & Innovation</strong> <br>
+<li>March 2024 – May 2024</li>
+        <li><strong>Community Catalyst, IDEAR</strong> <br>
+<li>July 2023 – December 2023</li>
+        <li><strong>Graphic Design Intern, Two Birds One Stone</strong> <br>
+<li>June 2022 – August 2022</li>
+      </ul>
+    </section>
+	  
+	  <!-- Resume Sections -->
+    <section class="section">
+<h2>Education</h2>
+      <ul>
+        <li><strong>Bachelor of Design (Honours) | Conestoga College </strong> 
+			<li>September 2025 – April 2027</li>
+<li><strong>Advanced Diploma of Graphic Design | St. Clair College</strong> 
+<li>September 2022 – April 2025</li>
+    </section>
+
+    <section class="section">
+      <h2>Volunteering</h2>
+      <ul>
+        <li><strong>Graphic Designer, "1 in 100" (Arcana Pictures)</strong> <br>
+<li>January 2025 – Present</li>
+        <li><strong>Student RGD Committee Member</strong> 
+		</li>October 2024 – April 2025</li>
+      </ul>
+    </section>
+
+<section class="section">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span>Adobe Creative Suite (Photoshop, Illustrator, InDesign, After Effects, Premiere Pro)</span><span>MacOS</span><span>Blender</span>
+        <span>Slide Deck Design</span><span>Video Editing</span><span>Motion Design</span>
+        <span>Retouching</span><span>Brand Design</span><span>AutoCAD</span>
+        <span>Packaging Design</span><span>Print Production</span><span> Written & Verbal Communication</span>
+      </div>
+    </section>
+  
+	
+	<section class="section">
+      <h2>Awards & Competitions</h2>
+      <ul>
+        <li><strong>Kevin Doherty Scholarship for Digital Creativity ($1,500) | Issued by NVISION</strong> <br>
+<li>August 2025</li>
+	    <li></li>
+		  <li><strong>Annual 4K Run Poster Contest | 1st Place |Issued by Saints Student Athletic Association</strong></li>
+</li>February 2025</li>
+        <li></li>
+        <li><strong>Annual Student Day Planner Cover Contest | 1st Place ($500) | Issued by St. Clair College Student Representative Council</strong> </li>
+        March 2023
+        </li>
+		
+      </ul>
+    </section>
+	</div>
+
+   <footer class="footer">
+    <div class="footer-inner">
+      <h2 class="footer-heading">Let's Connect!</h2>
+      <ul class="footer-links">
+         <li><a href="mailto:daljitkaurdesign@gmail.com"><img src="img/email.png" alt="" width="37"></a><a href="mailto:daljitkaurdesign@gmail.com"></a></li>
+		  <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/"><img src="img/linkedin-112.svg" alt="" width="26"></a><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank"></a></li>
+		  <li><a href="https://www.instagram.com/_daljit.k/"><img src="img/instagram-logo-3286.svg" alt="" width="28"></a><a href="https://www.instagram.com/_daljit.k/"></a></li>
+      </ul>
+     <p>daljitkaurdesign@gmail.com
+     <p>
+		<p class="footer-credit">2025 Daljit Kaur Design</p>
+    </div>
+  </footer>
+
+<script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("show");
+    }
+
+    // Fade-in animation
+    document.addEventListener('DOMContentLoaded', function () {
+      const fadeInElements = document.querySelectorAll('.fade-in');
+      fadeInElements.forEach((el, index) => {
+        el.style.transitionDelay = `${index * 0.2}s`;
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeInElements.forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
