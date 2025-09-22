@@ -2,17 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PLAY — Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daljit Kaur – Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts: Syne (headlines) + Karla (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-
-
-/* Global Reset */
+    /* Global Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+	  
+	  html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Syne', sans-serif;
+    }
+
+    main {
+      flex: 1; /* grows to push footer */
+    }
+
 
 /* Sticky Navbar */
 .navbar {
@@ -105,7 +119,7 @@
   }
 }
 	  .footer {
-  background-color: #fff;
+  background-color: white;
   color: #121212;
   padding: 3rem 2rem;
   border-top: 1px solid #e6e6e6;
@@ -175,9 +189,9 @@
 	  
 	  body {
       margin: 0;
-      font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
-      background-color: black;
-      color: white;
+      font-family: syne;
+      background-color: white;
+      color: black;
     }
 
     header {
@@ -194,7 +208,7 @@
     header p {
       max-width: 600px;
       margin: 0 auto;
-      color: white;
+      color: black;
     }
 
     .masonry {
@@ -294,35 +308,36 @@
         font-size: 2rem;
       }
     }
+    }
   </style>
 </head>
 <body>
 
-	<nav class="navbar">
-  <div class="logo">Daljit Kaur Design</div>
-  <div class="nav-links">
-    <a href="index.html">Work</a>
-    <a href="playground.html">Playground</a>
-    <a href="about.html">About</a>
-  </div>
-  <div class="hamburger" onclick="toggleMobileMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-		
-		<!-- Move this here -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Work</a>
-    <a href="playground.html">Playground</a>
-    <a href="about.html">About</a>
-  </div>
-</nav>
-
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">daljit kaur design</div>
+    <div class="nav-links">
+      <a href="testnewconetsogalanding.html">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="about-two.html">ABOUT</a>
+    </div>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="testnewconetsogalanding.html">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="about-two.html">ABOUT</a>
+    </div>
+  </nav>
+  <main>
   <header>
-    <h1>PLAY</h1>
+    <h1>the playground</h1>
     <p>A space for experiments, sketches, loose thoughts, and happy accidents.</p>
   </header>
+	
 
   <div class="masonry">
     <div class="masonry-item">
@@ -333,48 +348,72 @@
       </div>
     </div>
 	  
+	   <div class="masonry-item">
+      <img src="img/CraveCtrl_1.gif" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Portrait of my sister</h2>
+      </div>
+    </div>
+	  
 	  <div class="masonry-item">
-      <img src="oneinonehundred_poster.png" alt="Ink Study" onclick="openLightbox(this.src)">
+      <img src="img/1in1003.png" alt="Ink Study" onclick="openLightbox(this.src)">
       <div class="overlay">
         <h2>1 in 100</h2>
         <p>Poster for an upcoming documentary about children with congenital heart disease.</p>
       </div>
     </div>
-
-    <div class="masonry-item">
+	  
+	  <div class="masonry-item">
+      <img src="img/fourk_poster.jpg" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Tourism Windsor Essex Pelee Island Fiesta Weekend</h2>
+        <p>Mexican-inspired branding for a city-wide bar-hopping weekend.</p>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
+      <img src="img/BikeMockup2.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>4K Run Poster</h2>
+        <p>1st Place Winner of a contest to design the St. Clair College 4K Run poster.</p>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
+      <img src="img/bbbfiesta_mockup2.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Pencil Statue Rendering</h2>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
+      <img src="img/gradoctopus2.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Green as it Gets</h2>
+        <p>Logo for an eco-friendly landscaping company.</p>
+      </div>
+    </div>
+	  
+	   <div class="masonry-item">
+      <img src="img/statueportrait.avif" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Pencil Statue Rendering</h2>
+      </div>
+    </div>
+	  
+	  <div class="masonry-item">
       <img src="img/rezaabedini_mockup.png" alt="Sketchbook Page" onclick="openLightbox(this.src)">
       <div class="overlay">
         <h2>Swan Lake in Dubai</h2>
         <p>Arabic and Latin typographic poster, inspired by the work of Reza Abedini.</p>
       </div>
     </div>
-
-    <div class="masonry-item">
-      <img src="img/InTransit-hero.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
-      <div class="overlay">
-        <h2>In Transit Magazine</h2>
-        <p>Magazine positioning the Arctic as a viable workplace to early career professionals.</p>
-      </div>
-    </div>
-	  <div class="masonry-item">
-      <img src="img/fourk_poster.jpg" alt="Abstract Colors" onclick="openLightbox(this.src)">
-      <div class="overlay">
-        <h2>4K Run Poster</h2>
-        <p>1st Place Winner of a contest to design the St. Clair College 4K Run poster.</p>
-      </div>
-    </div>
+	  
 	  <div class="masonry-item">
       <img src="img/intothewilderness_mockup.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
       <div class="overlay">
         <h2>Into the Wilderness</h2>
         <p> cover concept for a mystery novel.</p>
-      </div>
-    </div>
-	  
-	  <div class="masonry-item">
-      <img src="img/statueportrait.avif" alt="Abstract Colors" onclick="openLightbox(this.src)">
-      <div class="overlay">
-        <h2>Pencil Statue Rendering</h2>
       </div>
     </div>
 	  
@@ -388,10 +427,10 @@
 	  <div class="masonry-item">
       <img src="img/harsharn.jpg" alt="Abstract Colors" onclick="openLightbox(this.src)">
       <div class="overlay">
-        <h2>Portrait of my sister</h2>
+        <h2>Octopus Pointilism</h2>
       </div>
     </div>
-	  
+
 	  <div class="masonry-item">
       <img src="img/20250216_143054.jpg" alt="Abstract Colors" onclick="openLightbox(this.src)">
       <div class="overlay">
@@ -400,15 +439,34 @@
     </div>
 	  
 	   <div class="masonry-item">
-      <img src="img/greenasitgets.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <img src="img/disruptpostertwo.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
       <div class="overlay">
-        <h2>Green as it Gets</h2>
-        <p>Logo for an eco-friendly landscaping company.</p>
+        <h2>Octopus Pointilism</h2>
       </div>
     </div>
-
-    <!-- Add more items here -->
-  </div>
+    
+		    <div class="masonry-item">
+      <img src="img/trashpsatwo.png" alt="Abstract Colors" onclick="openLightbox(this.src)">
+      <div class="overlay">
+        <h2>Octopus Pointilism</h2>
+      </div>
+		 </div>
+  </main>
+	    <footer class="footer">
+    <div class="footer-inner">
+      <h2 class="footer-heading">Let's Connect!</h2>
+      <ul class="footer-links">
+         <li><a href="mailto:daljitkaurdesign@gmail.com"><img src="img/email.png" alt="" width="37"></a><a href="mailto:daljitkaurdesign@gmail.com"></a></li>
+		  <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/"><img src="img/linkedin-112.svg" alt="" width="26"></a><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank"></a></li>
+		  <li><a href="https://www.instagram.com/_daljit.k/"><img src="img/instagram-logo-3286.svg" alt="" width="28"></a><a href="https://www.instagram.com/_daljit.k/"></a></li>
+      </ul>
+     <p>daljitkaurdesign@gmail.com
+     <p>
+		<p class="footer-credit">2025 Daljit Kaur Design</p>
+    </div>
+  </footer>
+</body>
+	  
 
   <!-- Lightbox container -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -428,17 +486,9 @@
       lightbox.classList.remove('show');
     }
   </script>
-    <footer class="footer">
-  <div class="footer-inner">
-    <h2 class="footer-heading">Let's Connect!</h2>
-    <ul class="footer-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank">LinkedIn</a></li>
-      <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
-    </ul>
-    <p class="footer-credit">2025 Daljit Kaur Design</p>
-  </div>
-</footer>
+   
+		
+				
   <script>
 	  
 	  function toggleMobileMenu() {
@@ -479,5 +529,33 @@
     // Initially show the first slide
     showSlide(slideIndex);
   </script>
-</body>
+
+   
+	<script>
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("show");
+    }
+
+    // Fade-in animation
+    document.addEventListener('DOMContentLoaded', function () {
+      const fadeInElements = document.querySelectorAll('.fade-in');
+      fadeInElements.forEach((el, index) => {
+        el.style.transitionDelay = `${index * 0.2}s`;
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeInElements.forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
 </html>
