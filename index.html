@@ -1,119 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daljit Kaur – Project Title</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Grid</title>
+
+  <!-- Google Fonts: Syne -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    .fade-in.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .typing-container {
-      position: relative;
-      text-align: center;
-		margin: 2rem;
-
-    }
-
-    .typing-container h1 {
-      font-size: 2.2rem;
-      color: white;
-      margin: 1rem;
-    }
-
-    .typing-container p {
-      font-size: 1.2rem;
-      color: #ccc;
-      margin: 1rem;
-    }
-
-    .typing-container a {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      background-color: transparent;
-      border: 2px solid white;
-      color: white;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .typing-container a:hover {
-      background-color: white;
-      color: #121212;
-    }
-
-    .scroll-icon {
-      margin-top: 2rem;
-      font-size: 1.8rem;
-      color: white;
-      animation: bounce 2s infinite;
-      z-index: 2;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-	   .logo-marquee {
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-      padding: 1rem 0;
-    }
-
-    .logo-track {
-      display: inline-block;
-      animation: scroll 20s linear infinite;
-    }
-
-    .logo-track img {
-      height: 40px;
-      margin: 0 2rem;
-      vertical-align: middle;
-    }
-
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+      margin: 0;
+      font-family: 'Syne', sans-serif;
+      background: #fff;
+      color: #111;
     }
 	  
+	  /* Start hidden */
+/* Start hidden (only on card elements) */
+/* Start hidden (only row cards) */
+.row1,
+.row2,
+.row3,
+.row4,
+.row5 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Fade in when visible */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+    /* ---------- NAV ---------- */
     .navbar {
       position: sticky;
       top: 0;
-      width: 100%;
       background-color: #ffffff;
       display: flex;
       justify-content: space-between;
@@ -166,18 +94,30 @@
       background: white;
       position: absolute;
       top: 100%;
+      left: 0;
       right: 0;
       width: 100%;
       padding: 1rem 2rem;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      overflow-y: auto;
+      max-height: 0;
+      opacity: 0;
+      z-index: 1000;
     }
 
-    .mobile-menu a {
-      padding: 0.8rem 0;
-      text-decoration: none;
-      color: #333;
-      border-bottom: 1px solid #eee;
+    .mobile-menu.show {
+      display: flex;
+      max-height: 80vh;
+      opacity: 1;
     }
+	  
+	  .mobile-menu a {
+  padding: 0.8rem 0;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #eee;
+	  }
 
     @media (max-width: 600px) {
       .nav-links {
@@ -191,94 +131,117 @@
       }
     }
 
-    .container {
+	  .intro-text {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+.intro-text h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .intro-text {
+    grid-column: span 3; /* left half */
+    align-self: center;
+  }
+}
+
+	  
+    /* ---------- GRID ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
       padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1400px;
+      margin: auto;
     }
 
-    .hero-video {
-      width: 100%;
-      max-height: 600px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-    }
-
-    .design-philosophy {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 4rem;
-    }
-
-    .design-philosophy h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .design-philosophy p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    .side-by-side {
+    .card {
       display: flex;
-		margin-bottom: 2rem;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 2rem;
     }
 
-    .side-by-side > div {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .side-by-side img {
+    .card img {
       width: 100%;
-      aspect-ratio: 1/1;
+      height: auto;
+      border-radius: 12px;
       object-fit: cover;
-      border-radius: 10px;
     }
 
-    .side-by-side h3 {
-      margin: 1rem 0 0.5rem;
+    .tagline {
+      font-size: 2rem;
+      font-weight: regular;
+      text-transform: lowercase;
     }
 
-    .side-by-side button {
-      background: black;
-      color: white;
-      border: 2px solid white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 5px;
-      cursor: pointer;
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 3rem;
+      border: 2px solid #111;
+      border-radius: 999px;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: regular;
+      letter-spacing: 0.5px;
+      background: transparent;
+      color: #111;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      width: fit-content;
     }
 
-    .testimonial-slider {
-      display: flex;
-      overflow-x: auto;
-      gap: 2rem;
-      scroll-snap-type: x mandatory;
-      margin-top: 4rem;
+    .btn:hover {
+      background: #111;
+      color: #fff;
     }
 
-    .testimonial-slider > div {
-      min-width: 300px;
-      background: #1e1e1e;
-      padding: 1.5rem;
-      border-radius: 10px;
-      scroll-snap-align: start;
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      /* Row 1: wide card */
+      .card.row1 {
+        grid-column: 1 / -1;
+      }
+
+      /* Row 2: 2 cards */
+      .card.row2 {
+        grid-column: span 3;
+      }
+
+      /* Row 3: 3 cards */
+      .card.row3 {
+        grid-column: span 2;
+      }
+
+      /* Row 4: 2 cards */
+      .card.row4 {
+        grid-column: span 3;
+      }
+
+      /* Row 5: wide card */
+      .card.row5 {
+        grid-column: 1 / -1;
+      }
     }
 
-    .testimonial-slider p {
-      color: #bbb;
-    }
-
+    /* ---------- FOOTER ---------- */
     .footer {
       background-color: #fff;
       color: #121212;
       padding: 3rem 2rem;
       border-top: 1px solid #e6e6e6;
       font-size: 0.95rem;
+      margin-top: 4rem;
     }
 
     .footer-inner {
@@ -334,204 +297,139 @@
   </style>
 </head>
 <body>
+
   <nav class="navbar">
-    <div class="logo">Daljit Kaur Design</div>
+    <div class="logo">daljit kaur design</div>
     <div class="nav-links">
-      <a href="index.html">Work</a>
-      <a href="playground.html">Playground</a>
-      <a href="about.html">About</a>
+      <a href="testnewconetsogalanding.html">WORK</a>
+      <a href="playground.html">PLAYGROUND</a>
+      <a href="about-two.html">ABOUT</a>
     </div>
     <div class="hamburger" onclick="toggleMobileMenu()">
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Work</a>
-      <a href="playground.html">Playground</a>
-      <a href="about.html">About</a>
-    </div>
-  </nav>
-
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="img/Sequence 02.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+		<!-- Move this here -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="testnewconetsogalanding.html">WORK</a>
+    <a href="playground.html">PLAYGROUND</a>
+    <a href="about-two.html">ABOUT</a>
+  </div>
+</nav>
+	
 	
 
-
-  
-	<div class="typing-container">
-      <h1>There's a unique story to tell behind every <span id="typed"></span></h1>
-      <p>I use multidisciplinary design as a tool to solve problems, tell stories, and connect audiences.</p>
-      <a href="about.html">Learn More</a>
-      <div class="scroll-icon"><i class="fas fa-chevron-down"></i></div>
-
+  <section class="grid">
+	  <!-- Intro Text -->
+  <div class="intro-text">
+    <h1>strategic & smart design</h1>
+    <p>
+      I’m a multidisciplinary creative that uses design to solve problems, tell stories, and
+      connect audiences. I focus on strategic, simple, and smart design across several
+      mediums — from branding and packaging to motion and content creation.
+    </p>
+  </div>
+    <!-- Row 1 -->
+    <div class="card row1">
+      <img src="img/Screenshot 2025-09-21 at 9.56.05 PM.png" alt="Wolfhead project storm concept">
+      <div class="tagline">when the storm stops for you</div>
+      <a href="#" class="btn">coming soon</a>
     </div>
-  
 
-  
-	<div class="container fade-in">
-   <!-- First Row -->
-
-<!-- Second Row -->
-<div class="side-by-side">
-  <div>
-    <a href="wolfhead.html"><img src="img/wolfhead_tile.jpg" alt="Project 2 Duplicate" /></a>
-    <h3><a href="wolfhead.html">An Irresistable Gift</a></h3>
-    <a href="wolfhead.html">
-      <button>See More</button>
-    </a>
-  </div>
-	<div>
-    <a href="artinmotion.html"><img src="img/artinmotiontile.jpg" alt="Project 1 Duplicate" /></a>
-    <h3>Art that Comes to Life<a href="artinmotion.html"></a></h3>
-    <a href="artinmotion.html">
-      <button>View Now</button>
-    </a>
-  </div>
-</div>
-		<!-- First Row -->
-<div class="side-by-side">
-  <div>
-    <a href="intransit.html"><img src="img/ghb_tile.png" alt="Project 1" /></a>
-    <h3>A Bike Rack that Inspires the City <a href="intransit.html"></a></h3>
-    <a href="intransit.html">
-      <button>Join the Ride</button>
-    </a>
-  </div>
-	<div>
-    <a href="projectone.html"><img src="img/cleo_hero.jpg" alt="Project 1" /></a>
-    <h3>Cosmetics that Resurrect <a href="projectone.html">Ancient</a> Egypt</h3>
-    <a href="projectone.html">
-      <button>Go Back in Time</button>
-    </a>
-  </div>
-</div>
-		
-<div class="side-by-side">
-  <div>
-    <a href="fizzy.html"><img src="img/fizzy_mockups.png" alt="Project 2" /></a>
-    <h3><a href="fizzy.html">Beverages for the Responsibly Irresponsible</a></h3>
-    <a href="fizzy.html">
-      <button>Crack Open</button>
-    </a>
-  </div>
-	<div>
-    <a href="planner.html"><img src="img/plannermockup.png" alt="Project 2" /></a>
-    <h3><a href="planner.html">A Bold Start to the New Year</a></h3>
-    <a href="planner.html">
-      <button>Learn More</button>
-    </a>
-  </div>
-</div>
-		
-<!-- Second Row -->
-<div class="side-by-side">
-  <div>
-    <a href="pda.html"><img src="img/patty-duke-tile.png" alt="Project 1 Duplicate" /></a>
-    <h3>A Rebrand that Deserves the Spotlight<a href="pda.html"></a></h3>
-    <a href="pda.html">
-      <button>Discover Now</button>
-    </a>
-  </div>
-  <div>
-    <a href="swc.html"><img src="img/swc_postone.jpg" alt="Project 2 Duplicate" /></a>
-    <h3><a href="swc.html">A Conservation Brand with a Human Touch</a></h3>
-    <a href="swc.html">
-      <button>Dive In</button>
-    </a>
-  </div>
-</div>
- 
-	  
-
-    <div class="testimonial-slider">
-      <div>
-        <p>"To say Daljit went above and beyond expectations is an understatement."</p>
-        <p style="margin-top: 0.5rem; color: #888;">— Michael Reagan, Design Director, Two Birds, LLC.</p>
-      </div>
-      <div>
-        <p>"I am pleased to recommend Daljit as a talented and creative graphic designer. Her attention to detail and strong work ethic set her apart and she always adds value through her fresh ideas and capabilities."</p>
-        <p style="margin-top: 0.5rem; color: #888;">— Sonja Popovski, Business Development Manager, St. Clair College Research and Innovation</p>
-      </div>
-      <div>
-        <p>"Incredibly classy."</p>
-        <p style="margin-top: 0.5rem; color: #888;">— Michael Pearce, The Patty Duke Family Foundation</p>
-      </div>
+    <!-- Row 2 -->
+    <div class="card row2">
+      <img src="img/wolfhead_header_sharp.jpg" alt="Gift concept design">
+      <div class="tagline">an irresistible gift</div>
+      <a href="#" class="btn">see more</a>
     </div>
-  </div>
 
-  <footer class="footer">
+    <div class="card row2">
+      <img src="img/ago_header.jpg" alt="Art concept design">
+      <div class="tagline">art that comes to life</div>
+      <a href="#" class="btn">view now</a>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="card row3">
+      <img src="img/ghb_tile.png" alt="Bike rack design">
+      <div class="tagline">bike racks that celebrate the rose city</div>
+      <a href="#" class="btn">join the ride</a>
+    </div>
+
+    <div class="card row3">
+      <img src="img/cleo_hero.jpg" alt="Cosmetics inspired by Egypt">
+      <div class="tagline">cosmetics that resurrect ancient egypt</div>
+      <a href="#" class="btn">travel back in time</a>
+    </div>
+
+    <div class="card row3">
+      <img src="img/fizzy_mockups.png" alt="Creative beverages concept">
+      <div class="tagline">beverages for the responsibly irresponsible</div>
+      <a href="#" class="btn">crack open</a>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="card row4">
+      <img src="img/plannermockup.png" alt="School year branding">
+      <div class="tagline">a bold start to the school year</div>
+      <a href="#" class="btn">learn now</a>
+    </div>
+
+    <div class="card row4">
+      <img src="img/patty-duke-tile.png" alt="Event rebrand design">
+      <div class="tagline">an event rebrand that deserves the spotlight</div>
+      <a href="#" class="btn">discover now</a>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="card row5">
+      <img src="img/swc_postone2.png" alt="Conservation branding">
+      <div class="tagline">a conservation brand with a human touch</div>
+      <a href="swctwo.html" class="btn">dive in</a>
+    </div>
+  </section>
+
+ <footer class="footer">
     <div class="footer-inner">
       <h2 class="footer-heading">Let's Connect!</h2>
       <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank">LinkedIn</a></li>
-        <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
+         <li><a href="mailto:daljitkaurdesign@gmail.com"><img src="img/email.png" alt="" width="37"></a><a href="mailto:daljitkaurdesign@gmail.com"></a></li>
+		  <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/"><img src="img/linkedin-112.svg" alt="" width="26"></a><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank"></a></li>
+		  <li><a href="https://www.instagram.com/_daljit.k/"><img src="img/instagram-logo-3286.svg" alt="" width="28"></a><a href="https://www.instagram.com/_daljit.k/"></a></li>
       </ul>
-      <p class="footer-credit">2025 Daljit Kaur Design</p>
+     <p>daljitkaurdesign@gmail.com
+     <p>
+		<p class="footer-credit">2025 Daljit Kaur Design</p>
     </div>
   </footer>
 
-   <script>
+
+  <script>
     function toggleMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      mobileMenu.classList.toggle('show');
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("show");
     }
+	  
+// Setup IntersectionObserver with stricter settings
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.intersectionRatio === 1) { // fully visible
+      entry.target.classList.add("fade-in");
+      observer.unobserve(entry.target); // animate once
+    }
+  });
+}, {
+  threshold: 1.0,          // element must be 100% visible
+    // trigger closer to top (adjust if needed)
+});
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const fadeInElements = document.querySelectorAll('.fade-in');
-      fadeInElements.forEach((el, index) => {
-        el.style.transitionDelay = `${index * 0.3}s`;
-      });
+// Observe rows
+document.querySelectorAll(".row1, .row2, .row3, .row4, .row5")
+  .forEach(el => observer.observe(el));
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
 
-      fadeInElements.forEach(el => {
-        observer.observe(el);
-      });
-
-      const words = ["ad.", "logo.", "package.", "video.", "brand."];
-      let wordIndex = 0;
-      let charIndex = 0;
-      let typing = true;
-      const typedSpan = document.getElementById("typed");
-      typedSpan.textContent = '';
-
-      function type() {
-        if (typing) {
-          if (charIndex < words[wordIndex].length) {
-            typedSpan.textContent += words[wordIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, 100);
-          } else {
-            typing = false;
-            setTimeout(type, 1500);
-          }
-        } else {
-          if (charIndex > 0) {
-            typedSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(type, 50);
-          } else {
-            typing = true;
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(type, 300);
-          }
-        }
-      }
-
-      type();
-    });
   </script>
+
 </body>
 </html>
