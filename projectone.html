@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daljit Kaur – Project Title</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
+	<!-- Google Fonts: red-hat-text -->
+<!-- ✅ Google Fonts: Syne (headlines) + Karla (body) -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,25 +15,28 @@
     }
 
     body {
-      font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
+      font-family: syne;
+      background-color: white;
+      color: #121212;
       line-height: 1.6;
     }
+	  
+	  
 
     a {
       color: inherit;
       text-decoration: none;
     }
-
-    .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+	
+	
+	.fade-in {
+opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .fade-in.in-view {
-  opacity: 1;
+ opacity: 1;
   transform: translateY(0);
 }
 
@@ -140,6 +145,32 @@
       object-fit: cover;
       object-position: center center; /* Ensures image is centered */
     }
+	
+/* full-bleed strip that breaks out of the centered .container */
+.full-bleed {
+  width: 200%;
+  overflow: hidden;
+  margin: 2rem 0; /* space above/below like you had before */
+  background: #000; /* optional fallback while image loads */
+}
+
+/* the image inside the wrapper — cropped and responsive */
+.full-bleed img {
+  width: 100%;
+  height: 420px;        /* set the visible height you want */
+  object-fit: cover;    /* crops while keeping subject centered */
+  display: block;
+}
+
+/* responsive heights */
+@media (max-width: 900px) {
+  .full-bleed img { height: 320px; }
+}
+@media (max-width: 480px) {
+  .full-bleed img { height: 220px; }
+}
+
+
 	  
 	  .full-video {
   width: 100%;
@@ -149,14 +180,17 @@
 }
 
     .project-title {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 0.5rem;
+		font-weight: 550;
+		text-transform: capitalize;
     }
 
     .breadcrumbs {
       font-size: 0.95rem;
-      color: #bbb;
+      color: #5D5D5D;
       margin-bottom: 2rem;
+		text-transform: uppercase;
     }
 
     .grid-3col {
@@ -172,20 +206,69 @@
     }
 
     .grid-3col h2 {
-      font-size: 1.2rem;
+      font-size: 1.7rem;
+		font-weight: 550;
       margin-bottom: 0.5rem;
     }
 
-    .grid-3col p {
-      font-size: 1.05rem;
-      color: #bbb;
+    p {
+      font-family: 'Karla', sans-serif; /* ✅ Body default */
+      font-weight: 400;
+      background-color: white;
+      color: #5d5d5d;
+      line-height: 1.6;
+    }
+	
+	.grid-3col p {
+      font-family: 'Karla', sans-serif; /* ✅ Body default */
+      font-weight: 400;
+      background-color: white;
+      color: #5d5d5d;
+      line-height: 1.6;
+    }
+	
+	.question {
+      font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1.5;   /* tighter than 4rem */
+  margin-top: 5rem;
+		margin-bottom: 1rem;
+  color: #121212;
+    }
+	
+	.question-subcopy {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6b6b6b;          /* soft grey */
+  margin-bottom: 5rem;
+  max-width: 760px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+	
+	   .slideshow-container {
+      position: relative;
+      width: 100%; /* adjust as needed */
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+
+    .slideshow-container img {
+      width: 100%;
+      display: none; /* hide all by default */
+    }
+
+    .slideshow-container img.active {
+      display: block; /* show active image */
     }
 
     .full-image {
   display: block;
   width: 100%;
-  margin: 2rem 0;
-  border-radius: 10px;
+  margin-top: 2rem;
+margin-bottom: 2rem;
   cursor: pointer;
   transition: opacity 1s ease;
 }
@@ -196,15 +279,53 @@
     }
 
     .side-by-side {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap; /* ✅ stacks on small screens */
+  align-items: center;
+}
+
+.side-by-side > div {
+  flex: 1;
+  min-width: 280px; /* ✅ prevents squishing */
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slideshow-container img {
+  width: 100%;
+  display: none;
+}
+
+.slideshow-container img.active {
+  display: block;
+}
+
+	.btn {
+      display: inline-block;
+      padding: 0.5rem 3rem;
+      border: 2px solid #111;
+      border-radius: 999px;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: regular;
+      letter-spacing: 0.5px;
+      background: transparent;
+      color: #111;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      width: fit-content;
+    }
+	
+	.btn:hover {
+      background: #111;
+      color: #fff;
     }
 
-    .side-by-side div {
-      flex: 1;
-      min-width: 250px;
-    }
 
 .footer {
   background-color: #fff;
@@ -258,6 +379,7 @@
 
 .footer-links li a:hover::after {
   width: 100%;
+	text-decoration: underline;
 }
 
 .footer-credit {
@@ -314,6 +436,18 @@
       max-height: 90%;
       border-radius: 10px;
     }
+	
+	.side-by-side {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap; /* ✅ stacks on small screens */
+  align-items: center;
+}
+
+.side-by-side > div {
+  flex: 1;
+  min-width: 280px; /* ✅ prevents squishing */
+}
 
     @media (max-width: 767px) {
       .nav-links {
@@ -330,7 +464,7 @@
     // Fade-in animation
     const fadeInElements = document.querySelectorAll('.fade-in');
     fadeInElements.forEach((el, index) => {
-      el.style.transitionDelay = `${index * 0.2}s`;
+      el.style.transitionDelay = `${index * 0.1}s`;
     });
 
     const observer = new IntersectionObserver((entries) => {
@@ -378,11 +512,11 @@
 </head>
 <body>
   	<nav class="navbar">
-  <div class="logo">Daljit Kaur Design</div>
+  <div class="logo">daljit kaur design</div>
   <div class="nav-links">
-    <a href="index.html">Work</a>
-    <a href="playground.html">Playground</a>
-    <a href="about.html">About</a>
+    <a href="testnewconetsogalanding.html">WORK</a>
+    <a href="playground.html">PLAYGROUND</a>
+    <a href="about-two.html">ABOUT</a>
   </div>
   <div class="hamburger" onclick="toggleMobileMenu()">
     <div></div>
@@ -392,61 +526,166 @@
 		
 		<!-- Move this here -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Work</a>
-    <a href="playground.html">Playground</a>
-    <a href="about.html">About</a>
+    <a href="testnewconetsogalanding.html">WORK</a>
+    <a href="playground.html">PLAYGROUND</a>
+    <a href="about-two.html">ABOUT</a>
   </div>
 </nav>
 	
   <img src="img/adcc_cleo_allpackaging.jpg" alt="Project Hero" class="hero fade-in" onclick="openLightbox(this.src)" />
   
   <main class="container">
+  
     <h1 class="project-title fade-in">Cleo: Beauty of Old Civilization</h1>
-    <div class="breadcrumbs fade-in">Logo / Brand Identity / Packaging / Art Direction / Social Media / Student Work</div>
+    <div class="breadcrumbs fade-in">Rebrand / Information Design / Public Engagement Strategy / Reports / Social Media / Student Work</div>
+  
+	  <div class="question fade-in">Cleo is an emerging Egyptian-origin skincare brand that needed a brand identity to help them stand out from competitors when they launch at Sephora.
+<br>
+</div>
+	  <p class="question-subcopy fade-in">
+Cleo targets budget-conscious and socially-conscious 18-24-year-old women seeking a luxury skincare experience at mid-level prices</p>	  
 
-    <div class="grid-3col">
-      
+
+<div class="divider"></div>
+	  </div>
+<div>
+  <h2 class="fade-in">The Market Comparison</h2>
+    <p class="fade-in">Cleo's brand needed to take inspiration and motifs from three domains: popular North American, mid-range skincare brands, luxurious and high-end cosmetics brands, and Egyptian-origin labels.<br>
+      <br>
+	  <br>
+  </p>
+  </div>
       <div>
-        <h2 class="fade-in">Problem</h2>
-        <p class="fade-in">Cleo is an emerging Egyptian-origin skincare brand targetting budget-conscious and socially-conscious 18-24-year-old women seeking a luxury skincare experience at mid-level prices. Cleo needed a brand identity to help them stand out from competitors when they hit the shelves of Sephora for the first time.</p>
+       <!-- Research -->
+<div class="section">
+			  <div class="grid-3col">
+      <div>
+        <h3 class="fade-in">Mid-Range Skincare for Teens and Twenties</h3>
+        <p class="fade-in"><br>
+        Feels clean and minimal but also repetitive and forgettable. Often relies on type and colour. Each package blends in; no package stands out without word-of-mouth or celebrity endorsement.</p>
       </div>
       <div>
-        <h2 class="fade-in">Solution</h2>
-        <p class="fade-in">Cleo's brand identity invites consumers to feel beautiful, elegant, and empowered. Research revealing a preference for geometric illustrations among our audience over detailed ones influenced the simplified representations of hieroglyphics on the packaging. To maintain affordability and honour Egyptian God of the Earth, Geb, Cleo opts for eco-friendly boxes and tubes over costly glass, metal, or printing finishes.</p>
+        <h3 class="fade-in">Luxury International Skincare</h3>
+        <p class="fade-in"><br>
+          Minimal, but elevated with glass or metallic packaging. Unique personalities in each brand. But some of these print finishes are too expensive for Cleo’s mid-level budget.</p>
+      </div>
+		  <div>
+        <h3 class="fade-in">Egyptian-Origin Competitors</h3>
+        <p class="fade-in"> <br>
+          Gold accents, minimal illustration, variety of approaches. Proves decorative touches  are possible at mid-range pricing. But some feel too “handi-craft” for Cleo’s audience.</p>
+      </div>
+		<h2 class="fade-in">Telling Cleopatra's Real Story</h2>
+</div>
+   
+<div class="slideshow-container">
+     <img src="img/Screenshot 2025-09-19 at 4.07.02 PM.png" alt="Slide 1" class="active">
+    <img src="img/Screenshot 2025-09-19 at 4.02.12 PM.png" alt="Slide 2">
+    <img src="img/Screenshot 2025-09-19 at 4.01.46 PM.png" alt="Slide 3">
+	<img src="img/Screenshot 2025-09-19 at 4.01.39 PM.png" alt="Slide 3">
+</div>
+
+    <img src="img/adcc_cleo.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+<div>
+    
+	<div class="question fade-in">History attempts to portray Cleopatra as a femme fatale who utilized her unparalleled beauty to seduce and gain power. The truth is that, according to historians, Cleopatra was average-looking, and her reputation was distorted by male writers and former partners out of spite. The truth was, she used argumentation and persuasion to gain allies. Today, her true appearance remains unknown. I wanted my brand to embody Cleopatra’s true traits, such as her mystery, calculatedness, and luxury.
+    </div>
+	
+  </div>	
+	<img src="img/Cleo-BrandGuidelines.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+	<div class="grid-3col">
+      <div>
+        <h3 class="fade-in">The Design Solution</h3>
+        <p class="fade-in"><br>
+        Cleo's brand identity invites consumers to feel beautiful, elegant, and empowered, just like Cleopatra herself did. Market research revealed a preference for geometric illustrations among our audience over detailed ones influenced the simplified representations of hieroglyphics on the packaging.</p>
+      </div>
+		<div>  
+		  <h3 class="fade-in">The Importance of Colour</h3>
+        <p class="fade-in"><br>
+  Cleo's brand identity places significance on black, which represents Cleopatra's mysterious traits, gold (which represents luxury), and blue, which echoes back to the hues used in ancient Egyptian art centuries ago.</p>      </div>
+      <div>
+        <h3 class="fade-in">Honouring God Geb</h3>
+        <p class="fade-in"><br>
+        To maintain affordability and honour the Egyptian God of the Earth, Geb, Cleo opts for eco-friendly boxes and tubes over costly glass, metal, or printing finishes seen in higher-end products. The cost of those finishes actually drives the price of the product up, not the formulation itself.</p>
+      
+      </div>
+	  </div>
+	
+	<div class="side-by-side">
+  
+  <div class="slideshow-container">
+    <img src="img/cleo_sand.jpg" alt="Slide 1" class="active">
+  </div>
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <img src="img/cleo-closeup-product-shot.jpg" alt="Slide 1" class="active">
+  </div>
+
+  
+  </div>
+</div>
+	
+      <div>
+			
+		  <div>
+			  <div>
+  </div>
+</div>
+		  <br>
+
+	  <div class="grid-3col">
+      <div>
+        <h2 class="fade-in">Challenges</h2>
+        <p class="fade-in">I struggled with creative block as I tried to create a logo that didn’t fall into Cleopatra and Egyptian cliches and a brand identity that felt luxurious but still conveyed its mid-range budget. Other challenges included researching skincare packaging/FDA requirements to create a package design that meets Canadian government standards. This included integrating French copy, gathering all the necessary icons and logos, brainstorming a manufacturer’s address, establishing a hierarchy for the vast amount of information I needed to fit on the packaging, and more.</p>
+      </div>
+      <div>
+        <h2 class="fade-in">Final Thoughts</h2>
+        <p class="fade-in"> Working on this project was my first time really bringing strategy and research into the design process. I took observations from three territories of research to shape a brand for mid-budget 18-24-year-olds. My goal was to give it the look of high-end packaging and include Egyptian design elements, while making everything cohesive. This project taught me just how important research and strategy are to the final product, and I’m excited to use this approach in future projects.</p>
       </div>
     </div>
-
-    <img src="img/cleo-combo-pics.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-	  <video class="full-video fade-in" autoplay loop muted playsinline>
+<video class="full-video fade-in" autoplay loop muted playsinline>
   <source src="img/video-cleo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
 </video>
-    <img src="img/adcc_cleo.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/Cleo-BrandGuidelines.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/cleo-socialmedia.jpg" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-	  
+</div>
+    </div>
+	<br>
+<div class="project-navigation">
+<a href="projectone.html" class="btn">Previous Project</a>
 
-    <div class="project-navigation">
-      <a href="intransit.html">
-      <button>Previous Project</button>
-      </a>      <a href="fizzy.html">
-      <button>Next Project</button>
-    </a>    </div>
+      
+		        <a href="projectone.html" class="btn">Next Project</a>
+
+</div>
   </main>
 
 <footer class="footer">
-  <div class="footer-inner">
-    <h2 class="footer-heading">Let's Connect!</h2>
-    <ul class="footer-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank">LinkedIn</a></li>
-      <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
-    </ul>
-    <p class="footer-credit">2025 Daljit Kaur Design</p>
-  </div>
-</footer>
+    <div class="footer-inner">
+      <h2 class="footer-heading">Let's Connect!</h2>
+      <ul class="footer-links">
+         <li><a href="mailto:daljitkaurdesign@gmail.com"><img src="img/email.png" alt="" width="37"></a><a href="mailto:daljitkaurdesign@gmail.com"></a></li>
+		  <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/"><img src="img/linkedin-112.svg" alt="" width="26"></a><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank"></a></li>
+		  <li><a href="https://www.instagram.com/_daljit.k/"><img src="img/instagram-logo-3286.svg" alt="" width="28"></a><a href="https://www.instagram.com/_daljit.k/"></a></li>
+      </ul>
+     <p><a href="mailto:daljitkaurdesign@gmail.com">daljitkaurdesign@gmail.com</a>
+     <p>
+	  <p class="footer-credit">2025 Daljit Kaur Design</p>
+    </div>
+  </footer>
 
+		  <script>
+    let slideIndex = 0;
+    document.querySelectorAll('.slideshow-container').forEach(container => {
+  let slideIndex = 0;
+  const slides = container.querySelectorAll('img');
 
+  function showSlides() {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+  }
 
+  setInterval(showSlides, 3000);
+});
+
+  </script>
 </body>
 </html>
