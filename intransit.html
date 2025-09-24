@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daljit Kaur – Project Title</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
+	<!-- Google Fonts: red-hat-text -->
+<!-- ✅ Google Fonts: Syne (headlines) + Karla (body) -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -13,25 +15,28 @@
     }
 
     body {
-      font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      background-color: #121212;
-      color: #fff;
+      font-family: syne;
+      background-color: white;
+      color: #121212;
       line-height: 1.6;
     }
+	  
+	  
 
     a {
       color: inherit;
       text-decoration: none;
     }
-
-    .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+	
+	
+	.fade-in {
+opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .fade-in.in-view {
-  opacity: 1;
+ opacity: 1;
   transform: translateY(0);
 }
 
@@ -140,16 +145,52 @@
       object-fit: cover;
       object-position: center center; /* Ensures image is centered */
     }
+	
+/* full-bleed strip that breaks out of the centered .container */
+.full-bleed {
+  width: 200%;
+  overflow: hidden;
+  margin: 2rem 0; /* space above/below like you had before */
+  background: #000; /* optional fallback while image loads */
+}
+
+/* the image inside the wrapper — cropped and responsive */
+.full-bleed img {
+  width: 100%;
+  height: 420px;        /* set the visible height you want */
+  object-fit: cover;    /* crops while keeping subject centered */
+  display: block;
+}
+
+/* responsive heights */
+@media (max-width: 900px) {
+  .full-bleed img { height: 320px; }
+}
+@media (max-width: 480px) {
+  .full-bleed img { height: 220px; }
+}
+
+
+	  
+	  .full-video {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
 
     .project-title {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 0.5rem;
+		font-weight: 550;
+		text-transform: capitalize;
     }
 
     .breadcrumbs {
       font-size: 0.95rem;
-      color: #bbb;
+      color: #5D5D5D;
       margin-bottom: 2rem;
+		text-transform: uppercase;
     }
 
     .grid-3col {
@@ -165,20 +206,69 @@
     }
 
     .grid-3col h2 {
-      font-size: 1.2rem;
+      font-size: 1.7rem;
+		font-weight: 550;
       margin-bottom: 0.5rem;
     }
 
-    .grid-3col p {
-      font-size: 1.05rem;
-      color: #bbb;
+    p {
+      font-family: 'Karla', sans-serif; /* ✅ Body default */
+      font-weight: 400;
+      background-color: white;
+      color: #5d5d5d;
+      line-height: 1.6;
+    }
+	
+	.grid-3col p {
+      font-family: 'Karla', sans-serif; /* ✅ Body default */
+      font-weight: 400;
+      background-color: white;
+      color: #5d5d5d;
+      line-height: 1.6;
+    }
+	
+	.question {
+      font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1.5;   /* tighter than 4rem */
+  margin-top: 5rem;
+		margin-bottom: 1rem;
+  color: #121212;
+    }
+	
+	.question-subcopy {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6b6b6b;          /* soft grey */
+  margin-bottom: 5rem;
+  max-width: 760px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+	
+	   .slideshow-container {
+      position: relative;
+      width: 100%; /* adjust as needed */
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+
+    .slideshow-container img {
+      width: 100%;
+      display: none; /* hide all by default */
+    }
+
+    .slideshow-container img.active {
+      display: block; /* show active image */
     }
 
     .full-image {
   display: block;
   width: 100%;
-  margin: 2rem 0;
-  border-radius: 10px;
+  margin-top: 2rem;
+margin-bottom: 2rem;
   cursor: pointer;
   transition: opacity 1s ease;
 }
@@ -189,15 +279,53 @@
     }
 
     .side-by-side {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap; /* ✅ stacks on small screens */
+  align-items: center;
+}
+
+.side-by-side > div {
+  flex: 1;
+  min-width: 280px; /* ✅ prevents squishing */
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slideshow-container img {
+  width: 100%;
+  display: none;
+}
+
+.slideshow-container img.active {
+  display: block;
+}
+
+	.btn {
+      display: inline-block;
+      padding: 0.5rem 3rem;
+      border: 2px solid #111;
+      border-radius: 999px;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: regular;
+      letter-spacing: 0.5px;
+      background: transparent;
+      color: #111;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      width: fit-content;
+    }
+	
+	.btn:hover {
+      background: #111;
+      color: #fff;
     }
 
-    .side-by-side div {
-      flex: 1;
-      min-width: 250px;
-    }
 
 .footer {
   background-color: #fff;
@@ -251,6 +379,7 @@
 
 .footer-links li a:hover::after {
   width: 100%;
+	text-decoration: underline;
 }
 
 .footer-credit {
@@ -264,6 +393,8 @@
     gap: 1rem;
   }
 }
+
+
 
     .project-navigation {
       display: flex;
@@ -305,6 +436,18 @@
       max-height: 90%;
       border-radius: 10px;
     }
+	
+	.side-by-side {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap; /* ✅ stacks on small screens */
+  align-items: center;
+}
+
+.side-by-side > div {
+  flex: 1;
+  min-width: 280px; /* ✅ prevents squishing */
+}
 
     @media (max-width: 767px) {
       .nav-links {
@@ -321,7 +464,7 @@
     // Fade-in animation
     const fadeInElements = document.querySelectorAll('.fade-in');
     fadeInElements.forEach((el, index) => {
-      el.style.transitionDelay = `${index * 0.2}s`;
+      el.style.transitionDelay = `${index * 0.1}s`;
     });
 
     const observer = new IntersectionObserver((entries) => {
@@ -369,11 +512,11 @@
 </head>
 <body>
 <nav class="navbar">
-  <div class="logo">Daljit Kaur Design</div>
+  <div class="logo">daljit kaur design</div>
   <div class="nav-links">
-    <a href="index.html">Work</a>
-    <a href="playground.html">Playground</a>
-    <a href="about.html">About</a>
+    <a href="testnewconetsogalanding.html">WORK</a>
+    <a href="playground.html">PLAYGROUND</a>
+    <a href="about-two.html">ABOUT</a>
   </div>
   <div class="hamburger" onclick="toggleMobileMenu()">
     <div></div>
@@ -383,28 +526,28 @@
 		
 		<!-- Move this here -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Work</a>
-    <a href="playground.html">Playground</a>
-    <a href="about.html">About</a>
+    <a href="testnewconetsogalanding.html">WORK</a>
+    <a href="playground.html">PLAYGROUND</a>
+    <a href="about-two.html">ABOUT</a>
   </div>
 </nav>
 	
   <img src="img/ghheader.jpg" alt="Project Hero" class="hero fade-in" onclick="openLightbox(this.src)" />
   
   <main class="container">
+  
     <h1 class="project-title fade-in">Gordie Howe Bridge Bike Rack Design</h1>
     <div class="breadcrumbs fade-in">Bike Rack Design / Placemaking / Contest Finalist</div>
-
-    <div class="grid-3col">
+  <div class="grid-3col">
       <div>
-		  <h2 class="fade-in">Team Members</h2>
+		  <h2 class="fade-in">Team</h2>
         <p class="fade-in">Daljit Kaur Khehra (Designer)</p>
-			<p class="fade-in">David Le (Designer)</p>
+			<p class="fade-in">David Le (Designer)</p><br>
 		   <h2 class="fade-in">Tools</h2>
         <p class="fade-in">Blender</p>
 		   <p class="fade-in">AutoCAD</p>
 		  <p class="fade-in">Illustrator</p>
-      </div>
+    </div>
 		<div>
               <div>
         <h2 class="fade-in">The Contest</h2>
@@ -431,35 +574,53 @@
         <p class="fade-in">Furthermore, the bike racks are embedded into the concrete pad rather than having a minimum of 2 ground-anchoring elements to allow for secure mounting to the concrete pad. By doing so, the design truly resembles a rose growing from the ground. This adds to its appeal not only as a representation of the host communities but also as a piece of art integrated into the surrounding environment. For those who don’t know the full story behind the bike rack, they can still view and enjoy them as pleasant art pieces while sparking curiosity about the meaning behind the design.</p>
       </div>   
     </div>
-		
-		
-    <img src="img/ghbrone.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/ghbrtwo.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/ghbrthree.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
-    <img src="img/ghbrfour.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
+    </div>
+		<div class="slideshow-container">
+     <img src="img/ghbrone.png" alt="Slide 1" class="active">
+    <img src="img/ghbrtwo.png" alt="Slide 2">
+    <img src="img/ghbrthree.png" alt="Slide 3">
+	<img src="img/ghbrfour.png" alt="Slide 3">
+</div>
+    </div>
+	<br>
+<div class="project-navigation">
+<a href="artinmotion.html" class="btn">PreviouS&nbsp;</a>
 
-    <div class="project-navigation">
-      <a href="artinmotion.html">
-      <button>Previous Project</button>
-      </a>
-      <a href="projectone.html">
-      <button>Next Project</button>
-    </a></div>
+      
+		        <a href="projectone.html" class="btn">Next</a>
+
+</div>
   </main>
 
 <footer class="footer">
-  <div class="footer-inner">
-    <h2 class="footer-heading">Let's Connect!</h2>
-    <ul class="footer-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank">LinkedIn</a></li>
-      <li><a href="mailto:daljitkaurdesign@gmail.com">Email</a></li>
-    </ul>
-    <p class="footer-credit">2025 Daljit Kaur Design</p>
+    <div class="footer-inner">
+      <h2 class="footer-heading">Let's Connect!</h2>
+      <ul class="footer-links">
+         <li><a href="mailto:daljitkaurdesign@gmail.com"><img src="img/email.png" alt="" width="37"></a><a href="mailto:daljitkaurdesign@gmail.com"></a></li>
+		  <li><a href="https://www.linkedin.com/in/daljit-kaur-khehra/"><img src="img/linkedin-112.svg" alt="" width="26"></a><a href="https://www.linkedin.com/in/daljit-kaur-khehra/" target="_blank"></a></li>
+		  <li><a href="https://www.instagram.com/_daljit.k/"><img src="img/instagram-logo-3286.svg" alt="" width="28"></a><a href="https://www.instagram.com/_daljit.k/"></a></li>
+      </ul>
+     <p><a href="mailto:daljitkaurdesign@gmail.com">daljitkaurdesign@gmail.com</a>
+     <p>
+	  <p class="footer-credit">2025 Daljit Kaur Design</p>
   </div>
 </footer>
 
+		  <script>
+    let slideIndex = 0;
+    document.querySelectorAll('.slideshow-container').forEach(container => {
+  let slideIndex = 0;
+  const slides = container.querySelectorAll('img');
 
+  function showSlides() {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+  }
 
+  setInterval(showSlides, 3000);
+});
+
+  </script>
 </body>
 </html>
