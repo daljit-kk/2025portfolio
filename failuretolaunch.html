@@ -247,7 +247,17 @@ opacity: 0;
   line-height: 1.6;
   letter-spacing: 0.01em;
 }
-	
+	.pdf-container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.pdf-container iframe {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  border: none;
+}
 	   .slideshow-container {
       position: relative;
       width: 100%; /* adjust as needed */
@@ -533,7 +543,7 @@ margin-bottom: 2rem;
   	<nav class="navbar">
   <div class="logo">daljit kaur design</div>
   <div class="nav-links">
-    <a href="index.html">WORK</a>
+    <a href="testnewconetsogalanding.html">WORK</a>
     <a href="playground.html">PLAYGROUND</a>
     <a href="about-two.html">ABOUT</a>
   </div>
@@ -545,7 +555,7 @@ margin-bottom: 2rem;
 		
 		<!-- Move this here -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">WORK</a>
+    <a href="testnewconetsogalanding.html">WORK</a>
     <a href="playground.html">PLAYGROUND</a>
     <a href="about-two.html">ABOUT</a>
   </div>
@@ -555,7 +565,7 @@ margin-bottom: 2rem;
   
   <main class="container">
   
-    <h1 class="project-title fade-in">Failure to Launch: the price of space exploration</h1>
+    <h1 class="project-title fade-in">Cascade Failure: the Human Cost of space exploration</h1>
     <div class="breadcrumbs fade-in">Data Storytelling / Print Production / Motion Design / Student Work
 </div>	   
 
@@ -575,6 +585,16 @@ margin-bottom: 2rem;
 	
 	<div class="side-by-side">
   
+		<div class="pdf-container fade-in">
+  <iframe
+    src="pdf/failure-to-launch.pdf"
+    width="100%"
+    height="900"
+    style="border:none;">
+  </iframe>
+</div>
+
+<img src="img/Cascade_Failure_Applied_Arts_2026.pdf" alt="Project Hero" class="hero fade-in" onclick="openLightbox(this.src)" />
   <div class="slideshow-container">
     <img src="img/ftl_displaystand.png" alt="Slide 1" class="active">
   </div>
