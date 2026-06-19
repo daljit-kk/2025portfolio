@@ -157,7 +157,7 @@ opacity: 0;
 /* the image inside the wrapper — cropped and responsive */
 .full-bleed img {
   width: 100%;
-  height: 420px;        /* set the visible height you want */
+  /*height: 420px;        /* set the visible height you want */
   object-fit: cover;    /* crops while keeping subject centered */
   display: block;
 }
@@ -319,7 +319,7 @@ margin-bottom: 2rem;
 
 .cropped-showcase {
   width: 100%;
-  height: 600px;        /* controls how much is revealed */
+  /*height: 600px;        /* controls how much is revealed */
   overflow: hidden;
   border-radius: 0;
 	  margin-bottom: 2rem; /* spacing added */
@@ -589,32 +589,32 @@ margin-bottom: 2rem;
 	 
 
 
-  <div class="slideshow-container">
-    <img src="CS_cover.png" alt="Slide 1" class="active">
-  </div>
+  <div class="cropped-showcase fade-in" onclick="openLightbox('CS_cover.png')">
+  <img src="CS_cover.png">
+</div>
   
 <div class="divider"></div>
 		<img src="img/CS_mockup_dark.png" alt="Main Showcase" class="full-image lightbox-image fade-in" onclick="openLightbox(this.src)" />
 <div class="divider"></div>
 
 	  </div>
-		<div class="cropped-showcase fade-in" onclick="openLightbox('img/ftl_s1.png')">
+		<div class="cropped-showcase fade-in" onclick="openLightbox('img/Spread1.png')">
   <img src="img/Spread1.png">
 </div>
 
-<div class="cropped-showcase fade-in" onclick="openLightbox('img/ftl_s2.png')">
+<div class="cropped-showcase fade-in" onclick="openLightbox('img/CF_spread2.png')">
   <img src="img/CF_spread2.png">
 </div>
 
-<div class="cropped-showcase fade-in" onclick="openLightbox('ftl_s3.png')">
+<div class="cropped-showcase fade-in" onclick="openLightbox('CF_spread3.png')">
   <img src="CF_spread3.png">
 </div>
 
-<div class="cropped-showcase fade-in" onclick="openLightbox('img/ftl_s4.png')">
+<div class="cropped-showcase fade-in" onclick="openLightbox('CF_spread4.png')">
   <img src="CF_spread4.png">
 </div>
 
-<div class="cropped-showcase fade-in" onclick="openLightbox('img/ftl_s5.png')">
+<div class="cropped-showcase fade-in" onclick="openLightbox('CF_spread5.png')">
   <img src="CF_spread5.png">
 </div>
 	<!-- Slideshow -->
